@@ -27,11 +27,10 @@ export const useUser = defineStore('user', () => {
       method: 'POST',
       body: { email, pass }
     })
-    console.log(user.value)
+    // console.log(user.value)
     if (user.value) {
       const userToLocal = {...user.value}
       // @ts-ignore
-      delete userToLocal.post
       localStorage.user = JSON.stringify(userToLocal)
       return ''
     } else {
