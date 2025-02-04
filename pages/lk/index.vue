@@ -22,7 +22,7 @@
       <NuxtLink to="/lk/post_create">Добавить публикацию</NuxtLink>
       <div class="grid">
         <div class="post" v-for="post of posts" :key="post.id">
-          <NuxtImg :src="`img/${post.img}`" sizes="300px" />
+          <NuxtImg :src="`${post.img}`" sizes="300px" />
           <h2>
             <NuxtLink :to="`/lk/post_edit/${post.id}`">{{ post.title }}</NuxtLink>
           </h2>
