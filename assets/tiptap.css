@@ -12,12 +12,21 @@
 }
 
 .tiptap {
-    height: 500px;
+    height: 1000px;
 }
 
 .tiptap p {
     color: green;
 }
+
+.tiptap img {
+    width: 200px;
+}
+
+.tiptapImg {
+    margin-top: 200px;
+}
+
 
 .myEditor {
     margin-top: 20px;

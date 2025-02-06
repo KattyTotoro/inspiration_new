@@ -125,7 +125,7 @@
     </div>
     <TiptapEditorContent :editor="editor" />
     
-    <div>
+    <div class="tiptapImg">
       <form method="post" @submit.prevent="upload">
         <input type="text" name="alt" v-model="alt" placeholder="Alt">
         <input type="file" ref="file" placeholder="Изображение">
