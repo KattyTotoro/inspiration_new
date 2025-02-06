@@ -17,7 +17,7 @@
   <p v-if="!posts?.length">Публикаций пока нет</p>
   <div v-else class="blockList">
     <div class="post" v-for="post of posts" :key="post.id">
-      <NuxtImg :src="`img/${post.img}`" sizes="300px"/>
+      <!-- <NuxtImg :src="`img/${post.img}`" sizes="300px"/> -->
       <h2><NuxtLink :to="`/posts/${post.id}_${post.title_en}`">{{ post.title }}</NuxtLink></h2>
       <p>{{ post.preview }}</p>
     </div>

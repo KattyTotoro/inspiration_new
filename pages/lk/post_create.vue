@@ -153,7 +153,8 @@ const save = async () => {
       method: 'POST',
       body: post.value
     })
-    console.log(req)
+    navigateTo('/lk')
+  
   }
 }
 

@@ -238,6 +238,10 @@ footer {
     color: blue;
 }
 
+.postPage img {
+    width: 200px;
+}
+
 /* .postPage {
     
 } */
