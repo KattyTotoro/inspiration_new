@@ -129,6 +129,7 @@ nav:hover {
 .topMenuButton {
     display: block;
     /* width: 200px; */
+    flex: 1;
     background: #dfeffe78;
     padding: 10px 20px;
     border: 3px solid #dfeffe;
@@ -276,6 +277,18 @@ footer {
         font-size: 5rem;
     }
 
+    @keyframes h1Fly {
+        from {
+            top: -120px;
+            left: -50%;
+        }
+    
+        to {
+            top: 40px;
+            left: 18%;
+        }
+    }
+
     nav {
         display: none;
     }
@@ -301,46 +314,100 @@ footer {
     }
 
     .topMenu {
-        display: grid;
+        margin-left: 10px;
+    }
+
+    footer {
         margin-left: 10px;
     }
 }
 
-@media screen and (max-width:600px) {
-    html {
-        font-size: 32px;
+@media screen and (max-width:1039px) {
+
+    header h1 {
+        font-size: 5rem;
     }
+
+    @keyframes h1Fly {
+        from {
+            top: -120px;
+            left: -50%;
+        }
+    
+        to {
+            top: 13px;
+            left: 13%;
+        }
+    }
+
+    .topMenu {
+        flex-wrap: wrap;
+        top: 100px;
+    }
+
+    .topMenuButton {
+        font-size: 1.5rem;
+    }
+
+    a.topMenuButton {
+        padding: 10px 60px;
+    }
+}
+
+@media screen and (max-width:971px) {
+
+    a.topMenuButton {
+        padding: 10px 20px;
+    }
+
+    .topMenu {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+    }
+}
+
+
+@media screen and (max-width:769px) {
+
+    .topMenu {
+        margin-left: 1px;
+    }
+
+    .content {
+        margin-left: 1px;
+    }
+
+    footer {
+        margin-left: 1px;
+    }
+}
+
+@media screen and (max-width:671px) {
 
     header h1 {
         font-size: 4rem;
     }
 
-    /* nav {
-        display: none;
-    } */
+    @keyframes h1Fly {
+        from {
+            top: -110px;
+            left: -40%;
+        }
+    
+        to {
+            top: 8px;
+            left: 7%;
+        }
+    }
 
     .topMenu {
-        display: initial;
-        /* width: 100%; */
-        margin-left: 3px;
+        top: 108px;
     }
 
-    .topMenuButton {
-        display: inline-block;
+    a.topMenuButton {
+        padding: 8px 5px;
     }
 
-    .content {
-        width: 100%;
-        margin-left: 3px;
-        /* margin-top: 40px; */
-        padding: 5px;
-    }
 
-    footer {
-        margin-left: 3px;
-    }
+
 }
-
-/* @media screen and (max-with) {
-    
-} */
