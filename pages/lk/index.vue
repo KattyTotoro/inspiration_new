@@ -1,6 +1,8 @@
 <template>
+
   <section class="content">
-    <h1>Личный кабинет</h1>
+    
+    <h1 class="lk_h1">Личный кабинет</h1>
 
     <!-- Форма входа -->
     <form v-if="!userStore.user" class="lk_entrance" @submit.prevent="handleLogin">
@@ -12,6 +14,10 @@
 
     <!-- Блок с публикациями -->
     <div v-if="userStore.user">
+
+      <!-- Кнопка выхода -->
+  <button @click="handleLogout" class="logout_button">Выйти</button> 
+
       <h2 style="font-size: 28px;">Мои публикации</h2>
       <p v-if="!posts?.length">Публикаций пока нет</p>
       <NuxtLink to="/lk/post_create">Добавить публикацию</NuxtLink>
@@ -47,9 +53,12 @@ const handleLogin = async () => {
   }
 };
 
-watch(()=>userStore.user, (user)=>{
-  if (user) fetchPosts()
-})
+// Функция для выхода
+const handleLogout = async () => {
+  userStore.logOut(); // Вызов метода выхода из хранилища
+  posts.value = []; // Очистка списка публикаций
+};
+
 
 // Функция для загрузки публикаций
 const fetchPosts = async () => {
@@ -58,6 +67,10 @@ const fetchPosts = async () => {
   posts.value = data.value?.posts || [] as Post[]
 };
 
+// Отслеживание изменения состояния пользователя
+watch(()=>userStore.user, (user)=>{
+  if (user) fetchPosts()
+})
 </script>
 
 <style scoped>

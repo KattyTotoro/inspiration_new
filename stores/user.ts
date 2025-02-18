@@ -17,9 +17,9 @@ interface regData {
 export const useUser = defineStore('user', () => {
   const user = ref(undefined as undefined | User)
   const logOut = () => {
-    user.value = undefined
-    delete localStorage.user
-    navigateTo('/login')
+    user.value = undefined // Сбрасываем состояние пользователя
+    delete localStorage.user // Удаляем пользователя из localStorage
+    // navigateTo('/lk') // Перенаправляем на страницу входа
   }
   const logIn = async (email: string, pass: string) => {
     console.log(email, pass)
