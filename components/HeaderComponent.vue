@@ -16,6 +16,7 @@
     <NuxtLink class="topMenuButton" :class="route.path=='/trips'?'currentLink':''" href="/trips">Путешествия</NuxtLink>
     <NuxtLink class="topMenuButton" :class="route.path=='/podcast'?'currentLink':''" href="/podcast">Подкаст</NuxtLink>
     <NuxtLink class="topMenuButton" :class="route.path=='/posts'?'currentLink':''" href="/posts">Публикации</NuxtLink>
+    <NuxtLink class="topMenuButton" :class="route.path=='/lk'?'currentLink':''" href="/lk">Личный кабинет</NuxtLink>
 
 
 </div>
