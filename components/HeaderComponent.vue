@@ -6,6 +6,8 @@
 <h1 :class="fly?fly:''">Вдохновение</h1>
 </div>
 
+<NuxtLink class="topMenuButton lk_link_button" :class="route.path=='/lk'?'currentLink':''" href="/lk">Личный кабинет</NuxtLink>
+
 <div class="topMenu">
 
     <NuxtLink class="topMenuButton" :class="route.path=='/'?'currentLink':''" href="/">Главная</NuxtLink>
@@ -16,7 +18,6 @@
     <NuxtLink class="topMenuButton" :class="route.path=='/trips'?'currentLink':''" href="/trips">Путешествия</NuxtLink>
     <NuxtLink class="topMenuButton" :class="route.path=='/podcast'?'currentLink':''" href="/podcast">Подкаст</NuxtLink>
     <NuxtLink class="topMenuButton" :class="route.path=='/posts'?'currentLink':''" href="/posts">Публикации</NuxtLink>
-    <NuxtLink class="topMenuButton" :class="route.path=='/lk'?'currentLink':''" href="/lk">Личный кабинет</NuxtLink>
 
 
 </div>

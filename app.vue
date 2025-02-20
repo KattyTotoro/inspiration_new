@@ -6,9 +6,11 @@
 
 <script setup lang="ts">
 const userStore = useUser()
+const appStore = useApp()
 onMounted(()=>{
   userStore.autoLogin()
 })
+appStore.getRubrics()
 </script>
 
 <style>

@@ -5,6 +5,7 @@
 }
 
 header {
+    position: relative;
     height: 300px;
     background: url(/img/sky.jpg) top/cover no-repeat fixed;
 }
@@ -118,9 +119,11 @@ nav:hover {
 /* Все кнопки верхнего меню */
 .topMenu {
     /* max-width: fit-content; */
+    position: absolute;
+    bottom: 0%;
     display: flex;
-    position: relative;
-    top: 253px;
+    gap: 1px;
+    /* top: 253px; */
     margin-left: 200px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -131,7 +134,7 @@ nav:hover {
     /* width: 200px; */
     flex: 1;
     background: #dfeffe78;
-    padding: 10px;
+    padding: 10px 25px;
     border: 3px solid #dfeffe;
     border-radius: 10px 10px 0 0;
     box-shadow: 0 0 20px whitesmoke;
@@ -150,7 +153,7 @@ a.topMenuButton {
     text-decoration: none;
     color: rgb(40, 65, 91);
     /* color: #fff; */
-    padding: 10px;
+    padding: 10px 25px;
 }
 
 .topMenuButton:hover {
@@ -247,6 +250,15 @@ footer {
     
 } */
 
+
+.lk_link_button {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    border: 3px solid #dfeffe;
+    border-radius: 10px;
+}
+
 .lk_entrance {
     margin-left: 1400px;
 }
@@ -292,10 +304,11 @@ footer {
 }
 
 
-/* 1865 */
-@media screen and (max-width:1865px) {
-    .topMenu {
-        top: 229px;
+
+@media screen and (max-width:1330px) {
+
+    a.topMenuButton {
+        padding: 10px;
     }
 }
 
@@ -331,7 +344,7 @@ footer {
     }
 
     .topMenu {
-        top: 130px;
+        /* top: 130px; */
         margin-left: 100px;
     }
 
@@ -356,9 +369,9 @@ footer {
 
 @media screen and (max-width:1039px) {
 
-    header h1 {
+    /* header h1 {
         font-size: 5rem;
-    }
+    } */
 
     @keyframes h1Fly {
         from {
@@ -374,32 +387,48 @@ footer {
 
     .topMenu {
         flex-wrap: wrap;
-        top: 100px;
+        /* top: 100px; */
     }
 
-    .topMenuButton {
+    /* .topMenuButton {
         font-size: 1.5rem;
-    }
+    } */
 
     a.topMenuButton {
-        padding: 10px 60px;
+        padding: 10px 50px;
     }
 }
 
 @media screen and (max-width:971px) {
 
-    a.topMenuButton {
-        padding: 10px 20px;
+    @keyframes h1Fly {
+        from {
+            top: -120px;
+            left: -50%;
+        }
+    
+        to {
+            top: 8px;
+            left: 5%;
+        }
     }
 
-    .topMenu {
+    a.topMenuButton {
+        padding: 10px 40px;
+    }
+
+    /* .topMenu {
         display: grid;
         grid-template-columns: 25% 25% 25% 25%;
-    }
+    } */
 }
 
 
 @media screen and (max-width:769px) {
+
+    header h1 {
+        font-size: 4rem;
+    }
 
     .topMenu {
         margin-left: 1px;
@@ -412,34 +441,31 @@ footer {
     footer {
         margin-left: 1px;
     }
+
+    a.topMenuButton {
+        padding: 10px 30px;
+    }
 }
 
 @media screen and (max-width:671px) {
 
     header h1 {
-        font-size: 4rem;
-    }
-
-    @keyframes h1Fly {
-        from {
-            top: -110px;
-            left: -40%;
-        }
-    
-        to {
-            top: 8px;
-            left: 7%;
-        }
+        font-size: 3.5rem;
     }
 
     .topMenu {
-        top: 108px;
+        /* top: 108px; */
     }
 
     a.topMenuButton {
-        padding: 8px 5px;
+        padding: 8px 15px;
     }
 
+}
 
+@media screen and (max-width:600px) {
+    .lk_link_button {
+        width: 110px;
+    }
 
 }

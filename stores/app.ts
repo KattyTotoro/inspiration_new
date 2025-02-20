@@ -1,14 +1,12 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import type { Rubric } from '@prisma/client'
 
 export const useApp = defineStore('app', () => {
-  const data = ref(Date.now())
-  const dataPage = ref('')
-  const downloadData = async () => {
-    if (!dataPage.value) {
-      const {data} = await useFetch('')
-      dataPage.value = data.value as string
-    }
+  const rubrics = ref([] as Rubric[]|null)
+  const getRubrics = async () => {
+    const {data} = await useFetch<Rubric[]>('/api/rubrics')
+    rubrics.value = data.value
   }
-  return { data, dataPage, downloadData }
+  return { rubrics, getRubrics }
 })

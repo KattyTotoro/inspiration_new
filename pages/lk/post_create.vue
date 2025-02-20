@@ -1,6 +1,11 @@
 <template>
-  <section v-if="post" class="content tt">
+  <section v-if="userStore.user?.id" class="content tt">
     <input class="myEditor" type="text" v-model="post.title">
+    
+    <select name="rubric" v-model="rubric_id">
+      <option :value="rubric.id" v-for="rubric of appStore.rubrics" :key="rubric.id">{{ rubric.title }}</option>
+    </select>
+
     <div v-if="editor">
       <button @click="editor.chain().focus().toggleBold().run()"
         :disabled="!editor.can().chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
@@ -98,6 +103,9 @@
     <button @click="save">save</button>
         
   </section>
+  <section v-else>
+    Login first
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -105,6 +113,9 @@ import type { Post } from '@prisma/client';
 import { translit } from '~/lib/translit';
 import Image from '@tiptap/extension-image'
 
+const rubric_id = ref(1)
+const userStore = useUser()
+const appStore = useApp()
 const post = ref({} as Post)
 const alt = ref('')
 const file = ref(null)
@@ -133,7 +144,7 @@ const upload = async () => {
 }
 
 const save = async () => {
-  if (post.value) {
+  if (post.value && userStore.user?.id) {
     post.value.title_en = translit(post.value.title)
     post.value.text = editor.value?.getHTML().replaceAll('<p></p>', '<br>') || ''
     const firstImgStartIndex = post.value.text.indexOf('<img src="')
@@ -146,8 +157,8 @@ const save = async () => {
       const firstPEndIndex = post.value.text.indexOf('</p>',firstPStartIndex+3)
       post.value.preview = post.value.text.slice(firstPStartIndex+3, firstPEndIndex)
     }
-    post.value.author_id = 1
-    post.value.rubric_id = 1
+    post.value.author_id = userStore.user.id
+    post.value.rubric_id = rubric_id.value
     
     const req = await $fetch('/api/post', {
       method: 'POST',
