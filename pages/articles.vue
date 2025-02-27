@@ -4,6 +4,18 @@
     <section class="articles">
 
         <div class="article">
+
+
+            <p v-if="!posts?.length">Публикаций пока нет</p>
+            <div v-else class="blockList">
+                <div class="post" v-for="post of posts" :key="post.id">
+                <NuxtImg :src="`${post.img}`" sizes="300px"/>
+                <h2><NuxtLink :to="`/posts/${post.id}_${post.title_en}`">{{ post.title }}</NuxtLink></h2>
+                <p>{{ post.preview }}</p>
+                </div>
+            </div>
+
+
             <img src="/img/articlesImg/art1.jpg" width="300px" alt="">
 
             <div>
@@ -149,5 +161,8 @@ useSeoMeta({
   ogImage: '/img/summary_small_image.png',
   twitterCard: 'summary_large_image',
 })
+
+const {data} = await useFetch('/api/post/by_rubrics/1')
+const posts = ref(data.value?.posts)
 
 </script>
