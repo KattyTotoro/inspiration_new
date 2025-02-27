@@ -1,12 +1,17 @@
 <template>
   <section v-if="userStore.user?.id" class="content tt">
     
-    <select class="rubric_create" name="rubric" v-model="rubric_id">
+    <!-- Выбор рубрики -->
+
+    <label class="label_rubric_create" for="rubric">Выбор рубрики: </label>
+    <select class="rubric_create" name="rubric" id="rubric" v-model="rubric_id">
       <option :value="rubric.id" v-for="rubric of appStore.rubrics" :key="rubric.id">{{ rubric.title }}</option>
     </select>
 
-    <input class="myEditor" type="text" v-model="post.title">
+<!-- Ввод названия публикации -->
+    <input class="myEditor" type="text" v-model="post.title" placeholder="Введите название публикации">
 
+<!-- Кнопки редактирования публикации -->
     <div v-if="editor">
       <button @click="editor.chain().focus().toggleBold().run()"
         :disabled="!editor.can().chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
