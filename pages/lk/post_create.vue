@@ -1,10 +1,11 @@
 <template>
   <section v-if="userStore.user?.id" class="content tt">
-    <input class="myEditor" type="text" v-model="post.title">
     
-    <select name="rubric" v-model="rubric_id">
+    <select class="rubric_create" name="rubric" v-model="rubric_id">
       <option :value="rubric.id" v-for="rubric of appStore.rubrics" :key="rubric.id">{{ rubric.title }}</option>
     </select>
+
+    <input class="myEditor" type="text" v-model="post.title">
 
     <div v-if="editor">
       <button @click="editor.chain().focus().toggleBold().run()"

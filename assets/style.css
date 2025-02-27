@@ -284,6 +284,17 @@ footer {
     display: inline-block;
 }
 
+.post_create_button {
+    display: inline-block;
+    background-color: rgb(100, 158, 206);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgb(211, 205, 205);
+}
+
 .logout_button {
     position: absolute;
     top: 10%;
