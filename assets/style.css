@@ -297,12 +297,11 @@ footer {
 
 .logout_button {
     position: absolute;
-    top: 10%;
+    top: 35%;
     right: 4%;
     display: inline-block;
     width: 200px;
     border-radius: 10px;
-    margin: 20px;
     padding: 10px;
     text-align: center;
     background-color: rgb(100, 158, 206);

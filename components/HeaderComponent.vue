@@ -7,6 +7,8 @@
 </div>
 
 <NuxtLink class="topMenuButton lk_link_button" :class="route.path=='/lk'?'currentLink':''" href="/lk">Личный кабинет</NuxtLink>
+<!-- Кнопка выхода из личного кабинета -->
+<button v-if="userStore.user?.id" @click="handleLogout" class="logout_button">Выйти</button> 
 
 <div class="topMenu">
 
@@ -40,9 +42,17 @@
 </template>
 
 <script setup>
+const userStore = useUser()
 const route = useRoute()
 const fly = ref('')
 onMounted(()=>{
     fly.value = 'h1Fly'
 })
+
+// Функция для выхода
+const handleLogout = async () => {
+  userStore.logOut(); // Вызов метода выхода из хранилища
+  posts.value = []; // Очистка списка публикаций
+};
+
 </script>

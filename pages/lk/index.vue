@@ -15,9 +15,6 @@
     <!-- Блок с публикациями -->
     <div v-if="userStore.user">
 
-      <!-- Кнопка выхода из личного кабинета -->
-  <button @click="handleLogout" class="logout_button">Выйти</button> 
-
       <h2 style="font-size: 28px;">Мои публикации</h2>
       <p v-if="!posts?.length">Публикаций пока нет</p>
       <NuxtLink to="/lk/post_create" class="post_create_button">Добавить публикацию</NuxtLink>
@@ -53,11 +50,6 @@ const handleLogin = async () => {
   }
 };
 
-// Функция для выхода
-const handleLogout = async () => {
-  userStore.logOut(); // Вызов метода выхода из хранилища
-  posts.value = []; // Очистка списка публикаций
-};
 
 
 // Функция для загрузки публикаций
