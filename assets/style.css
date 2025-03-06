@@ -297,8 +297,8 @@ footer {
 
 .logout_button {
     position: absolute;
-    top: 35%;
-    right: 4%;
+    top: 100px;
+    right: 5%;
     display: inline-block;
     width: 200px;
     border-radius: 10px;

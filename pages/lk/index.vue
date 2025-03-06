@@ -50,13 +50,15 @@ const handleLogin = async () => {
   }
 };
 
-
+onMounted(()=>{
+  if (!posts.value.length) fetchPosts()
+})
 
 // Функция для загрузки публикаций
 const fetchPosts = async () => {
-  const { data } = await useFetch('/api/post');
+  const data = await $fetch('/api/post/by_users/'+userStore.user?.id);
   // @ts-ignore
-  posts.value = data.value?.posts || [] as Post[]
+  posts.value = data?.posts || [] as Post[]
 };
 
 // Отслеживание изменения состояния пользователя

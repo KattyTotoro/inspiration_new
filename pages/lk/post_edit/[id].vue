@@ -173,7 +173,6 @@ const route = useRoute()
 const id = route.params.id
 const {data} = await useFetch(`/api/post/${id}`)
 const post = ref(data.value?.post)
-
 const editor = useEditor({
   content: post.value?.text,
   extensions: [TiptapStarterKit, Image],
@@ -194,14 +193,14 @@ const save = async()=>{
         const firstPEndIndex = post.value.text.indexOf('</p>',firstPStartIndex+3)
         post.value.preview = post.value.text.slice(firstPStartIndex+3, firstPEndIndex)
         }
-        post.value.author_id = 1
-        post.value.rubric_id = 1
         post.value.text = editor.value?.getHTML().replaceAll('<p></p>','<br>') || ''
+        
         const req = await $fetch(`/api/post/${id}`, {
             method: 'PUT',
             body: post.value
         })
         console.log(req)
+        navigateTo('/lk')
     }
 }
 
