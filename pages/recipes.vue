@@ -6,6 +6,8 @@
 
     
         <h1><strong>Живое питание.</strong></h1>
+
+    <!-- Блок с публикациями -->
        
         <div class="blockList">
 
