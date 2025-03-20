@@ -51,19 +51,19 @@ const handleLogin = async () => {
 };
 
 onMounted(()=>{
-  if (!posts.value.length) fetchPosts()
+  if (!posts.value.length && userStore.user?.id) fetchPosts()
 })
 
 // Функция для загрузки публикаций
 const fetchPosts = async () => {
-  const data = await $fetch('/api/post/by_users/'+userStore.user?.id);
-  // @ts-ignore
+  const resp = await fetch('/api/post/by_users/'+userStore.user?.id);
+  const data = await resp.json()
   posts.value = data?.posts || [] as Post[]
 };
 
 // Отслеживание изменения состояния пользователя
 watch(()=>userStore.user, (user)=>{
-  if (user) fetchPosts()
+  if (user?.id) fetchPosts()
 })
 </script>
 

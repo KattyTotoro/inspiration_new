@@ -51,3 +51,15 @@
     border: 2px solid black;
     border-radius: 5px;
 }
+
+.deletPostButtom {
+    display: block;
+    margin-top: 150px;
+    transition: 0.5s;
+}
+
+.deletPostButtom:hover {
+    background: rosybrown;
+    transform: scale(1.1);
+    transition: 0.5s;
+}

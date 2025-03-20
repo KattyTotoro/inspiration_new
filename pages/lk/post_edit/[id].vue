@@ -133,6 +133,7 @@
       </form>
     </div>
 
+    <!-- КНопка Сохранить пост -->
     <button @click="save">save</button>
     <NuxtLink :to="`/posts/${post.id}_${post.title_en}`">{{ post.title }}</NuxtLink>
     
@@ -140,10 +141,14 @@
         <component :is="el.component">{{ el.content }}</component>
     </template> -->
 
+    <!-- Кнопка Удаление поста -->
+    <button class="deletPostButtom" @click="deletePost">Удалить пост</button>
+
 </section>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import { translit } from '~/lib/translit';
 import Image from '@tiptap/extension-image'
 
@@ -207,6 +212,28 @@ const save = async()=>{
 onBeforeUnmount(() => {
     unref(editor)?.destroy();
 });
+
+
+// Функция для удаления поста
+const deletePost = async () => {
+  if (confirm('Вы уверены, что хотите удалить этот пост?')) {
+    try {
+      const response = await $fetch(`/api/post/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (response.success) {
+        alert('Пост успешно удалён');
+        navigateTo('/lk'); // Перенаправляем пользователя в личный кабинет
+      } else {
+        alert('Не удалось удалить пост');
+      }
+    } catch (error) {
+      console.error('Ошибка при удалении поста:', error);
+      alert('Произошла ошибка при удалении поста');
+    }
+  }
+};
 </script>
 
 <style>
