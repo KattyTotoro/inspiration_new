@@ -17,6 +17,7 @@ model User {
   pass  String
   pseudo String?
   token  String @unique @default(uuid())
+  role  String?
   posts Post[]
 }
 
@@ -34,6 +35,7 @@ model Post {
   text      String
   preview   String
   img       String
+  approved   Boolean @default(false)
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
   smile     Int @default(0)

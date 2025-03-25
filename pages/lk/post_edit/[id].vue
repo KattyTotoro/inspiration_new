@@ -177,6 +177,7 @@ const upload = async () => {
 const route = useRoute()
 const id = route.params.id
 const {data} = await useFetch(`/api/post/${id}`)
+// @ts-ignore
 const post = ref(data.value?.post)
 const editor = useEditor({
   content: post.value?.text,
@@ -200,9 +201,9 @@ const save = async()=>{
         }
         post.value.text = editor.value?.getHTML().replaceAll('<p></p>','<br>') || ''
         
-        const req = await $fetch(`/api/post/${id}`, {
+        const req = await fetch(`/api/post/${id}`, {
             method: 'PUT',
-            body: post.value
+            body: JSON.stringify(post.value)
         })
         console.log(req)
         navigateTo('/lk')
@@ -218,11 +219,12 @@ onBeforeUnmount(() => {
 const deletePost = async () => {
   if (confirm('Вы уверены, что хотите удалить этот пост?')) {
     try {
-      const response = await $fetch(`/api/post/${id}`, {
+      const response = await fetch(`/api/post/${id}`, {
         method: 'DELETE',
       });
 
-      if (response.success) {
+      const result = await response.json()
+      if (result.success) {
         alert('Пост успешно удалён');
         navigateTo('/lk'); // Перенаправляем пользователя в личный кабинет
       } else {

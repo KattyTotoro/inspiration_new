@@ -80,7 +80,10 @@ export default defineEventHandler(async (event) => {
     if (id) {
         try {
             await prisma.post.update({
-                data, 
+                data:{
+                    ...data,
+                    approved: false,
+                }, 
                 where: {
                     id: +id
                 }

@@ -17,7 +17,6 @@ export default defineEventHandler(async (event) => {
                 },
                 where: {
                     author_id: +id,
-                    approved: true,
                 }
             })
             return {posts, ok: true}

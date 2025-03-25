@@ -14,7 +14,7 @@ export default defineEventHandler(async (event) => {
                 rubric: true,
             },
             where: {
-                approved:true,
+                approved:false,
             }
         })
         return {posts, ok: true}

@@ -6,18 +6,30 @@ export default defineEventHandler(async (event) => {
         try {
             const post = await prisma.post.findUnique({
                 include: {
-                    author: true,
+                    author: {
+                        select: {
+                            name: true,
+                            pseudo: true,
+                            id: true
+                        }
+                    },
                     rubric: true,
-                }, 
+                },
                 where: {
                     id: +id
                 }
             })
             const posts = await prisma.post.findMany({
                 include: {
-                    author: true,
+                    author: {
+                        select: {
+                            name: true,
+                            pseudo: true,
+                            id: true
+                        }
+                    },
                     rubric: true,
-                }, 
+                },
                 where: {
                     id: {
                         not: +id

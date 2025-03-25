@@ -6,6 +6,7 @@ interface User {
   id: number;
   email: string;
   token: string
+  role: string
 }
 
 interface regData {

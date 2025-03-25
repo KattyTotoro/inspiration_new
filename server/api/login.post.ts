@@ -9,11 +9,7 @@ export default defineEventHandler(async (event) => {
           email: true,
           name: true,
           token: true,
-          posts: {
-            select: {
-              title:true
-            }
-          }
+          role: true,
         },
         where: {
           email: data.email,
