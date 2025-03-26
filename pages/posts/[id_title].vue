@@ -1,5 +1,5 @@
 <template>
-  <section class="content" style="display: flex;">
+  <section class="content">
   
   <div v-if="post" class="postPage">
     <!-- {{ route.params.id_title }} -->

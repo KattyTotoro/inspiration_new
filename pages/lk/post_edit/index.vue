@@ -1,11 +1,10 @@
 <template>
-    <section class="content">
+    <div class="content">
 
       <h1>Сайт Вдохновение. Транслирование знаний.</h1>
       <strong>Путеводители среди знаний.</strong>
 
       <div>
-
         <p v-if="!posts?.length">Публикаций пока нет</p>
         <div v-else class="grid">
           <div class="post" v-for="post of posts" :key="post.id">
@@ -14,10 +13,9 @@
             <p>{{ post.preview }}</p>
           </div>
         </div>
-
       </div>
 
-    </section>
+    </div>
 </template>
 
 
