@@ -215,6 +215,12 @@ a.topMenuButton {
     margin: 20px;
 }
 
+.post {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 .article p,
 .recipe p,
 .postPage p {
@@ -241,7 +247,7 @@ footer {
 }
 
 .postPage img {
-    width: 200px;
+    width: 400px;
 }
 
 /* .postPage {

@@ -1,17 +1,19 @@
 <template>
 
-<div class="content">
+  <div class="content">
 
-            <p v-if="!posts?.length">Публикаций пока нет</p>
-            <div v-else class="blockList">
-                <div class="post" v-for="post of posts" :key="post.id">
-                <NuxtImg :src="`${post.img}`" sizes="300px"/>
+      <p v-if="!posts?.length">Публикаций пока нет</p>
+      <div v-else class="blockList">
+          <div class="post" v-for="post of posts" :key="post.id">
+                <NuxtImg :src="`${post.img}`" sizes="200px"/>
+                <div>
                 <h2><NuxtLink :to="`/posts/${post.id}_${post.title_en}`">{{ post.title }}</NuxtLink></h2>
                 <p>{{ post.preview }}</p>
                 </div>
-            </div>           
+          </div>
+      </div>           
 
-</div>
+  </div>
 </template>
 
 
