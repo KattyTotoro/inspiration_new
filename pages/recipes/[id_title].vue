@@ -38,6 +38,15 @@ const {data} = await useFetch(`/api/post/${id}`)
 // @ts-ignore
 const post = ref(data.value?.post)
 const posts = ref(data.value?.posts)
+useSeoMeta({
+  title: post.value.title,
+  ogTitle: post.value.title,
+  description: post.value.preview,
+  ogDescription: post.value.preview,
+  // !!! Указать имя домена
+  ogImage: 'https://domain.ru/'+post.value.img,
+  twitterCard: 'summary_large_image',
+})
 </script>
 
 <style scoped>

@@ -32,7 +32,7 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
-const {data} = await useFetch('/api/post')
+const {data} = await useFetch('/api/post/by_rubrics/3')
 const posts = ref(data.value?.posts)
 
 </script>
