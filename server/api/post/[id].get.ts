@@ -10,7 +10,8 @@ export default defineEventHandler(async (event) => {
             select: {
               name: true,
               pseudo: true,
-              id: true
+              id: true,
+              email:true
             }
           },
           rubric: true,

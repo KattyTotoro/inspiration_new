@@ -1,6 +1,14 @@
 <template>
 <section v-if="post" class="content tt">
     <input class="myEditor" type="text" v-model="post.title">
+
+    <template v-if="!post.approved">
+        <label class="label_rubric_create" for="rubric">Выбор рубрики: </label>
+        <select class="rubric_create" name="rubric" id="rubric" v-model="rubric_id">
+            <option :value="rubric.id" v-for="rubric of appStore.rubrics" :key="rubric.id">{{ rubric.title }}</option>
+        </select>
+    </template>
+
     <div v-if="editor">
     <button
         @click="editor.chain().focus().toggleBold().run()"
@@ -154,7 +162,8 @@ import Image from '@tiptap/extension-image'
 
 const alt = ref('')
 const file = ref(null)
-
+const rubric_id = ref(1)
+const appStore = useApp()
 
 const upload = async () => {
     const fileref = file.value as never as HTMLInputElement
@@ -200,7 +209,7 @@ const save = async()=>{
         post.value.preview = post.value.text.slice(firstPStartIndex+3, firstPEndIndex)
         }
         post.value.text = editor.value?.getHTML().replaceAll('<p></p>','<br>') || ''
-        
+        post.value.rubric_id = rubric_id.value
         const req = await fetch(`/api/post/${id}`, {
             method: 'PUT',
             body: JSON.stringify(post.value)

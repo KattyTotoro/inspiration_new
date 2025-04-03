@@ -121,8 +121,8 @@ import { translit } from '~/lib/translit';
 import Image from '@tiptap/extension-image'
 
 const rubric_id = ref(1)
-const userStore = useUser()
 const appStore = useApp()
+const userStore = useUser()
 const post = ref({} as Post)
 const alt = ref('')
 const file = ref(null)

@@ -1,7 +1,7 @@
 <template>
   <section class="content">
     <template v-if="userStore.user?.role=='moderator'">
-      <div class="grid">
+      <div class="blockList">
         <div class="post" v-for="post of posts" :key="post.id">
           <NuxtImg :src="`${post.img}`" sizes="300px" />
           <h2>

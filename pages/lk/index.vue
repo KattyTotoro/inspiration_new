@@ -19,7 +19,7 @@
       <h2 style="font-size: 28px;">Мои публикации</h2>
       <p v-if="!posts?.length">Публикаций пока нет</p>
       <NuxtLink to="/lk/post_create" class="post_create_button">Добавить публикацию</NuxtLink>
-      <div class="grid">
+      <div class="blockList">
         <div class="post" v-for="post of posts" :key="post.id">
           <NuxtImg :src="`${post.img}`" sizes="300px" />
           <h2>

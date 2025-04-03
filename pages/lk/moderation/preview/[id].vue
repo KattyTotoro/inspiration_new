@@ -4,18 +4,19 @@
             
             <div v-if="post" class="postPage">
                 <!-- {{ route.params.id_title }} -->
-            <!-- <br> -->
-            <!-- {{ id }} -->
-            <!-- <br> -->
-            <p>{{ post?.author?.pseudo ? post?.author?.pseudo : post?.author.name}}</p>
-            <h1>{{ post?.title }}</h1>
-            <br>
-            <NuxtImg :src="`${post?.img}`" sizes="300px"/>
-            
-            <div v-html="post?.text"></div>
-            <button @click="approve">Одобрить</button>
-        </div>
-        <div v-else>Что-то пошло не так...</div>
+                <!-- <br> -->
+                <!-- {{ id }} -->
+                <!-- <br> -->
+                <p>{{ post?.author?.pseudo ? post?.author?.pseudo : post?.author.name}}</p>
+                <h1>{{ post?.title }}</h1>
+                <br>
+                <NuxtImg :src="`${post?.img}`" sizes="300px"/>
+                
+                <div v-html="post?.text"></div>
+                <div style="clear: both"></div>
+                <button @click="approve">Одобрить</button>
+            </div>
+            <div v-else>Что-то пошло не так...</div>
         
         </template>
     </section>

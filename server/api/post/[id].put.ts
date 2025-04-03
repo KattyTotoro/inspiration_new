@@ -4,7 +4,8 @@ import path from 'path'
 
 export default defineEventHandler(async (event) => {
     const id = event.context.params?.id
-    const data = await readBody(event)
+    const json = await readBody(event)
+    const data = JSON.parse(json)
     delete data.id
     delete data.author
     delete data.rubric
@@ -16,7 +17,7 @@ export default defineEventHandler(async (event) => {
         const height = 450
         const label = data.title
         let text = ''
-        const textArr = label.split(' ')
+        const textArr = label?.split(' ')
         let tmpText = ''
         let line = 0
         for (let word of textArr) {
