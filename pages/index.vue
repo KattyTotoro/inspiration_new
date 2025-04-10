@@ -16,17 +16,6 @@
 </p>
 </div>
 
-<!-- Tiptap -->
-<div>
-
-    <ClientOnly>
-      <TiptapEditor />
-    </ClientOnly>
-
-
-</div>
-
-
 
 
         <div class="blockList">
