@@ -12,6 +12,8 @@
         
     <div v-html="post?.text"></div>
     <div style="clear: both;"></div>
+    <hr>  
+    <CommentsBlock :post_id="post.id"></CommentsBlock>
   </div>
   <div v-else>Что-то пошло не так...</div>
 
@@ -24,6 +26,7 @@
     </div>
   </div>
   </section>
+
 
 
   
