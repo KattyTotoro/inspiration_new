@@ -322,6 +322,33 @@ footer {
     box-shadow: 0 0 7px 1px rgba(246, 214, 9, 0.893) inset;
 }
 
+.comments {
+    padding: 20px;
+    border: solid 1px gray;
+    border-radius: 20px;
+}
+
+.reply {
+    padding: 5px;
+    margin-left: 5px;
+    border: solid 1px gray;
+    border-radius: 8px;
+}
+
+.reply:hover {
+    background-color: lightblue;
+}
+
+.enterComment {
+    width: 100%;
+    height: fit-content;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    border: solid 1px gray;
+    border-radius: 8px;
+}
+
 
 
 @media screen and (max-width:1330px) {

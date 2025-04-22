@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
       const comments = [] as any[]
 
       for (let el of commentsAll) {
-        console.log(el.id, el.comment_id)
+        // console.log(el.id, el.comment_id)
         if (!el.comment_id) {
             comments.push(el)
         } else {
