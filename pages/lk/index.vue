@@ -3,14 +3,21 @@
   <section class="content">
     
     <h1 class="lk_h1">Личный кабинет</h1>
+    <div class="nickname" v-if="userStore.user">
+      <p>Ваш ник: </p>
+      <h2>{{ userStore.user.name }}</h2>
+    </div>
 
-    <div class="tabs">
+    <div class="tabs" v-if="!userStore.user">
+      <input type="radio" id="tab-login" name="tab-group" checked @click="isAuth=true">
+      <label for="tab-login" style="width:81px" class="tab-title">Вход</label>
+      <input type="radio" id="tab-register" name="tab-group" @click="isAuth=false">
+      <label for="tab-register" style="width:140px" class="tab-title">Регистрация</label>
+      <br>
         <!-- Вкладка Входа -->
-      <div class="tab">
-        <input type="radio" id="tab-login" name="tab-group" checked>
-        <label for="tab-login" class="tab-title">Вход</label>
+      <div class="tab" v-if="isAuth">
         <div class="tab-content">
-          <form v-if="!userStore.user" class="lk_entrance" @submit.prevent="handleLogin">
+          <form class="lk_entrance" @submit.prevent="handleLogin">
             <input type="email" v-model="email" placeholder="Введите почту" required>
             <input type="password" v-model="password" placeholder="Введите пароль" required>
             <button type="submit">Войти</button>
@@ -19,14 +26,13 @@
         </div>
       </div>
 
-        <!-- Форма регистрации -->
-        <div class="tab">
-        <input type="radio" id="tab2" name="tab-group">
-        <label for="tab2" class="tab-title">Регистрация</label>
+        <!-- Вкладка регистрации -->
+        <div class="tab" v-else>
         <div class="tab-content">
-          <form v-if="!userStore.user" class="lk_entrance" @submit.prevent="handleLogin">
+          <form class="lk_entrance" @submit.prevent="handleRegister">
             <input type="email" v-model="email" placeholder="Введите почту" required>
             <input type="password" v-model="password" placeholder="Введите пароль" required>
+            <input type="password" v-model="password2" placeholder="Повторите пароль" required>
             <button type="submit">Зарегистрироваться</button>
             <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
           </form>
@@ -58,11 +64,15 @@
 import type { Post } from '@prisma/client';
 import { ref } from 'vue';
 
+const isAuth = ref(true)
 const email = ref('');
 const password = ref('');
+const password2 = ref('');
 const errorMessage = ref('');
 const posts = ref([] as Post[]); // Список публикаций
 const userStore = useUser()
+
+const registerError = ref('');
 
 
 // Функция для входа
@@ -76,6 +86,29 @@ const handleLogin = async () => {
 onMounted(()=>{
   if (!posts.value.length && userStore.user?.id) fetchPosts()
 })
+
+// Обработчик регистрации
+const handleRegister = async () => {
+  if (password.value !== password2.value) {
+    registerError.value = 'Пароли не совпадают';
+    return;
+  }
+
+  try {
+    registerError.value = '';
+    await userStore.regIn(
+      email.value,
+      password.value
+    );
+    // Очистка формы после успешной регистрации
+    email.value = '';
+    password.value = '';
+    password2.value = '';
+    isAuth.value = true
+  } catch (error) {
+    registerError.value = 'Ошибка регистрации. Возможно, email уже занят';
+  }
+};
 
 // Функция для загрузки публикаций
 const fetchPosts = async () => {
@@ -94,6 +127,8 @@ watch(()=>userStore.user, (user)=>{
 
 .tabs {
     position: relative; 
+    /* margin: 20px; */
+    margin-bottom: 20px;
    }
 
 .tab { 
@@ -102,38 +137,56 @@ watch(()=>userStore.user, (user)=>{
 
 .tab-title {
   display: inline-block; 
-  background: #ccc; 
-  padding: 5px 10px; 
+  background: #f0f0f0;
+  padding: 10px 20px;
   border: 1px solid #666; 
   border-bottom: none; 
+  border-radius: 4px 4px 0 0;
+  margin-right: 5px;
+  transition: color 0.3s ease, background 0.3s ease, font-weight 0.3s ease;
+}
+
+.tab-title:hover {
+  background: #e0e0e0;
 }
 
 input[type="radio"] { 
   display: none; 
 }
-   
-.tab:checked + .tab-title {
-  position: relative; 
+
+input[type="radio"]:checked + .tab-title {
+  background: #fff;
+  border-bottom: 1px solid #fff;
+  margin-bottom: -1px;
+  color: #007bff;
+  font-weight: bold;
+}
+
+/* .tab:checked + .tab-title {
+  position: absolute; 
+  top: 1px; 
   background: #fff; 
   top: 1px; 
   z-index: 1; 
-}
+} */
 
 .tab-content {
-  padding: 10px; 
+  padding: 20px; 
   width: 100%; 
   box-sizing: border-box; 
+  border: 1px solid #ddd;
+  border-radius: 0 4px 4px 4px;
  /* или */
   /* padding: 10px; */
   /* width: calc(100% - 20px); */
 }
 
-.tab:checked + .tab-title + .tab-content { 
+/* .tab:checked + .tab-title + .tab-content { 
   display: block; 
-}
+} */
 
 .lk_entrance {
-  max-width: 300px;
+  max-width: 400px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ddd;

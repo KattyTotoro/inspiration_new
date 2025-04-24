@@ -58,9 +58,8 @@ export const useUser = defineStore('user', () => {
     if (data.ok) {
       user.value = data.user
       localStorage.user = JSON.stringify(data.user)
-      return ''
     } else {
-      return data?.massage
+      throw new Error('error')
     }
   }
   return { user, logIn, logOut, autoLogin, regIn }

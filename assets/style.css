@@ -288,6 +288,17 @@ footer {
     display: inline-block;
 }
 
+.nickname {
+    display: flex;
+    background-image: linear-gradient(#2e9affad, #f498ae9d);
+    margin: 20px 0 20px 0;
+    gap: 20px;
+    padding: 20px;
+    font-size: 22px;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
 .post_create_button {
     display: inline-block;
     background-color: rgb(100, 158, 206);
