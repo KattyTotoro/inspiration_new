@@ -2,6 +2,10 @@
 
   <div class="content">
 
+    <h1>Все статьи. <br> 
+    Сайт Вдохновение. Транслирование знаний.<br>
+      <strong>Путеводители среди знаний.</strong></h1>
+
       <p v-if="!posts?.length">Публикаций пока нет</p>
       <div v-else class="blockList">
           <div class="post" v-for="post of posts" :key="post.id">

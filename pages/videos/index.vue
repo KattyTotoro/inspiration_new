@@ -2,7 +2,7 @@
 
   <section class="content">
 
-      <h1><strong>Живое питание.</strong></h1>
+      <h1><strong>Видео.</strong></h1>
 
       <!-- Блок с публикациями -->
       <p v-if="!posts?.length">Публикаций пока нет</p>
