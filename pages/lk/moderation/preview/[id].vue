@@ -10,7 +10,7 @@
                 <p>{{ post?.author?.pseudo ? post?.author?.pseudo : post?.author.name}}</p>
                 <h1>{{ post?.title }}</h1>
                 <br>
-                <NuxtImg :src="`${post?.img}`" sizes="300px"/>
+                <!-- <NuxtImg :src="`${post?.img}`" sizes="300px"/> -->
                 
                 <div v-html="post?.text"></div>
                 <div style="clear: both"></div>
@@ -35,7 +35,7 @@ async function approve() {
         body: JSON.stringify({token: userStore.user?.token})
     })
     const result = await resp.json()
-    console.log(result)
+    //console.log(result)
 }
 </script>
 

@@ -206,7 +206,7 @@ const save = async()=>{
         const firstPStartIndex = post.value.text.indexOf('<p>')
         if (firstPStartIndex!=-1) {
         const firstPEndIndex = post.value.text.indexOf('</p>',firstPStartIndex+3)
-        post.value.preview = post.value.text.slice(firstPStartIndex+3, firstPEndIndex)
+        post.value.preview = post.value.text.slice(firstPStartIndex+3, firstPEndIndex).replace(/<[^>]*>/g, '')
         }
         post.value.text = editor.value?.getHTML().replaceAll('<p></p>','<br>') || ''
         post.value.rubric_id = rubric_id.value
@@ -214,7 +214,7 @@ const save = async()=>{
             method: 'PUT',
             body: JSON.stringify(post.value)
         })
-        console.log(req)
+        //console.log(req)
         navigateTo('/lk')
     }
 }

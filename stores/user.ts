@@ -23,7 +23,7 @@ export const useUser = defineStore('user', () => {
     // navigateTo('/lk') // Перенаправляем на страницу входа
   }
   const logIn = async (email: string, pass: string) => {
-    console.log(email, pass)
+    //console.log(email, pass)
     user.value = await $fetch<User |undefined>('/api/login', {
       method: 'POST',
       body: { email, pass }
