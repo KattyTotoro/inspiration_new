@@ -12,6 +12,7 @@
         
     <div v-html="post?.text"></div>
     <div style="clear: both;"></div>
+    <p class="authorPost">Автор поста: {{ post.author.name }}</p>
     <hr>  
     <CommentsBlock :post_id="post.id"></CommentsBlock>
   </div>

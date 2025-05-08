@@ -14,7 +14,7 @@
                 
                 <div v-html="post?.text"></div>
                 <div style="clear: both"></div>
-                <button @click="approve">Одобрить</button>
+                <button class="approveButton" @click="approve">Одобрить</button>
             </div>
             <div v-else>Что-то пошло не так...</div>
         

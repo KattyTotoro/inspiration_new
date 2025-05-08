@@ -174,11 +174,14 @@ a.topMenuButton {
 }
 
 .content h1 {
+    background-image: linear-gradient(#2e9affad, #f498ae9d);
     margin-bottom: 30px;
+    padding: 20px;
     font-size: 2rem;
     font-style: italic;
     text-align: center;
     text-shadow: 2px 2px 2px rgba(185, 206, 224, 0.4);
+    border-radius: 5px;
 }
 
 .blockList {
@@ -254,6 +257,13 @@ footer {
     
 } */
 
+.authorPost {
+    /* max-width: fit-content; */
+    background-image: linear-gradient(#2e9affad, #f498ae9d);
+    text-align: right;
+    padding: 5px;
+    border-radius: 5px;
+}
 
 .lk_link_button {
     position: absolute;
@@ -299,7 +309,7 @@ footer {
     border-radius: 5px;
 }
 
-.post_create_button {
+.post_create_button, .approveButton {
     display: inline-block;
     background-color: rgb(100, 158, 206);
     font-size: 1.3rem;
@@ -308,6 +318,11 @@ footer {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgb(211, 205, 205);
+}
+
+.post_create_button:hover, .approveButton:hover {
+    background-color: rgba(67, 173, 235, 0.918);
+    box-shadow: 5px 5px 10px rgb(138, 189, 248);
 }
 
 .logout_button {
