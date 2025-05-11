@@ -5,7 +5,11 @@
     <h1 class="lk_h1">Личный кабинет</h1>
     <div class="nickname" v-if="userStore.user">
       <p>Ваш ник: </p>
-      <h2>{{ userStore.user.name }}</h2>
+      <div v-if="userStore.user.name!=null">{{ userStore.user.name }}</div>
+      <div v-else>
+        <input type="text" placeholder="Введите Ваш ник">
+        <button @click="saveNick">Сохранить</button>
+      </div>
     </div>
 
     <div class="tabs" v-if="!userStore.user">
@@ -71,6 +75,7 @@ const password2 = ref('');
 const errorMessage = ref('');
 const posts = ref([] as Post[]); // Список публикаций
 const userStore = useUser()
+const nick = ref('')
 
 const registerError = ref('');
 
@@ -109,6 +114,10 @@ const handleRegister = async () => {
     registerError.value = 'Ошибка регистрации. Возможно, email уже занят';
   }
 };
+
+// const saveNick = {
+ 
+// }
 
 // Функция для загрузки публикаций
 const fetchPosts = async () => {

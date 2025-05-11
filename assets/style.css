@@ -309,6 +309,12 @@ footer {
     border-radius: 5px;
 }
 
+.nickname button {
+    border: 2px solid rgb(52, 50, 50);
+    border-radius: 5px;
+    padding: 10px;
+}
+
 .post_create_button, .approveButton {
     display: inline-block;
     background-color: rgb(100, 158, 206);
