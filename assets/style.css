@@ -300,6 +300,7 @@ footer {
 
 .nickname {
     display: flex;
+    align-items: center;
     background-image: linear-gradient(#2e9affad, #f498ae9d);
     margin: 20px 0 20px 0;
     gap: 20px;

@@ -5,10 +5,9 @@
     <h1 class="lk_h1">Личный кабинет</h1>
     <div class="nickname" v-if="userStore.user">
       <p>Ваш ник: </p>
-      <div v-if="userStore.user.name!=null">{{ userStore.user.name }}</div>
-      <div v-else>
-        <input type="text" placeholder="Введите Ваш ник">
-        <button @click="saveNick">Сохранить</button>
+      <div>
+        <input type="text" name="nickname" v-model="userStore.user.name" placeholder="Введите Ваш ник">
+        <button @click="saveNickname">Сохранить</button>
       </div>
     </div>
 
@@ -75,7 +74,6 @@ const password2 = ref('');
 const errorMessage = ref('');
 const posts = ref([] as Post[]); // Список публикаций
 const userStore = useUser()
-const nick = ref('')
 
 const registerError = ref('');
 
@@ -115,9 +113,12 @@ const handleRegister = async () => {
   }
 };
 
-// const saveNick = {
- 
-// }
+const saveNickname = async () => {
+  $fetch('/api/user_name',{
+    method: 'PUT',
+    body: userStore.user
+  })
+}
 
 // Функция для загрузки публикаций
 const fetchPosts = async () => {

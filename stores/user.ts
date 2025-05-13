@@ -59,8 +59,9 @@ export const useUser = defineStore('user', () => {
       user.value = data.user
       localStorage.user = JSON.stringify(data.user)
     } else {
-      throw new Error('error')
+      return 'error'
     }
+    return 'error'
   }
   return { user, logIn, logOut, autoLogin, regIn }
 })
