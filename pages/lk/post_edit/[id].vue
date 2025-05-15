@@ -135,14 +135,14 @@
     
     <div class="tiptapImg">
       <form method="post" @submit.prevent="upload">
-        <input type="text" name="alt" v-model="alt" placeholder="Alt">
+        <input type="text" name="alt" v-model="alt" placeholder="Название картинки">
         <input type="file" ref="file" placeholder="Изображение">
-        <input type="submit" value="Загрузить">
+        <input class="uploadPicBut" type="submit" value="Загрузить">
       </form>
     </div>
 
     <!-- КНопка Сохранить пост -->
-    <button @click="save">save</button>
+    <button @click="save">Сохранить пост</button>
     <NuxtLink :to="`/posts/${post.id}_${post.title_en}`">{{ post.title }}</NuxtLink>
     
     <!-- <template v-for="el of components">
