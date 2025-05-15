@@ -41,13 +41,12 @@
 
 .label_rubric_create {
     font-weight: 600;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 10px 5px 10px 20px;
+    vertical-align: calc(-10px);
 }
 
 .rubric_create {
     margin-top: 20px;
-    margin-right: 20px;
     padding: 10px;
     border: 2px solid gray;
     border-radius: 5px;
