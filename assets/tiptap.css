@@ -5,10 +5,16 @@
     border: 2px solid gray;
     border-radius: 5px;
     font-weight: 600;
+    box-shadow: 3px 3px 10px rgba(134, 134, 134, 0.781);
+    /* box-shadow: 0 0 16px #acc1d8a6; */
 }
 
 .tt button:hover {
-    box-shadow: 0 0 5px 1px gray inset;
+    box-shadow: 0 0 5px 1px rgba(128, 128, 128, 0.76) inset;
+}
+
+.tt button:active {
+    transform: translate(3px, 3px);
 }
 
 .tiptap {
