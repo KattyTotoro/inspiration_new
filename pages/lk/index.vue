@@ -47,7 +47,7 @@
     <div v-if="userStore.user">
       <NuxtLink v-if="userStore.user?.role=='moderator'" to="/lk/moderation" class="post_create_button">Модерация</NuxtLink>
       
-      <h2 style="font-size: 28px;">Мои публикации</h2>
+      <h2 style="font-size: 28px; text-align: center; margin-top: 50px; font-style: italic;">Мои публикации</h2>
       <p v-if="!posts?.length">Публикаций пока нет</p>
       <NuxtLink to="/lk/post_create" class="post_create_button">Добавить публикацию</NuxtLink>
       <div class="blockList">
