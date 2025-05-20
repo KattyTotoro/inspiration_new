@@ -302,7 +302,8 @@ footer {
 .nickname {
     display: flex;
     align-items: center;
-    background-image: linear-gradient(#2e9affad, #f498ae9d);
+    max-width: fit-content;
+    background-image: linear-gradient(#2e9aff6e, #f498ae6c);
     margin: 20px 0 20px 0;
     gap: 20px;
     padding: 20px;
@@ -319,7 +320,7 @@ footer {
 }
 
 .nickname button:hover {
-    background-color: rgba(67, 173, 235, 0.918);
+    background-color: rgb(138, 189, 248);
     box-shadow: 5px 5px 10px rgb(138, 189, 248);
 }
 
