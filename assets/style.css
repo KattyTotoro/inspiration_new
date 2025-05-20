@@ -351,6 +351,17 @@ footer {
     transform: translate(3px, 3px);
 }
 
+.myPublications {
+    background-image: linear-gradient(#2e9aff6e, #f498ae6c); 
+    margin-top: 50px; 
+    padding: 20px;
+    font-size: 28px; 
+    text-align: center; 
+    font-style: italic;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgb(134, 134, 134);
+}
+
 .logout_button {
     position: absolute;
     top: 100px;
