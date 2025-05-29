@@ -24,7 +24,7 @@ header h1 {
 }
 
 .h1Fly {
-    animation: h1Fly 2s ease-in-out forwards;
+    animation: h1Fly 1s 2s ease-in-out forwards;
 }
 
 @keyframes h1Fly {

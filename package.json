@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "deploy": "nuxt generate && gh-pages --nojekyll -d .output/public"
   },
   "dependencies": {
     "@nuxt/image": "^1.8.1",
@@ -15,6 +16,7 @@
     "@prisma/nuxt": "^0.0.35",
     "@tiptap/extension-image": "^2.11.4",
     "busboy": "^1.6.0",
+    "gh-pages": "^6.3.0",
     "md5": "^2.3.0",
     "npm": "^11.1.0",
     "nuxt": "^3.13.0",

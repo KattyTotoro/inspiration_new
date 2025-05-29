@@ -1,16 +1,40 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import path from 'path'
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-
+  routeRules: {
+    "/lk/post_edit": { prerender: false },
+  },
+  app: {
+    head: {
+      title: 'Inspiration', 
+      htmlAttrs: {
+        lang: 'ru',
+      },
+      link: [
+        { rel: 'apple-touch-icon', sizes:'180x180' ,href: 'https://kattytotoro.github.io/inspiration_new/apple-touch-icon.png' },
+        { rel: 'icon', type:'image/png', sizes:'32x32', href: 'https://kattytotoro.github.io/inspiration_new/favicon-32x32.png' },
+        { rel: 'icon', type:'image/png', sizes:'16x16', href: 'https://kattytotoro.github.io/inspiration_new/favicon-16x16.png' },
+        { rel: 'manifest', href: 'https://kattytotoro.github.io/inspiration_new/site.webmanifest' },
+      ],
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1.0, shrink-to-fit=no',
+    },
+    baseURL: '/inspiration_new/',
+  },
   vite: {
     ssr: {
       external: ["@prisma/client"]
     },
     resolve: {
-      alias: {
-        ".prisma/client/index-browser": "./node_modules/.prisma/client/index-browser.js"
-      }
+      alias: [
+        {
+          find:'.prisma/client/index-browser',
+          replacement: path.resolve(__dirname, 'node_modules/@prisma/client/index-browser.js'),
+        },
+      ]
     },
     css: {
       preprocessorOptions: {
