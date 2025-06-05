@@ -3,7 +3,7 @@
 <header>
 
 <div style="position: relative;">
-<h1 class="h1Fly">Вдохновение</h1>
+<h1 class="h1Fly">Вдохновение!!!</h1>
 </div>
 
 <NuxtLink class="topMenuButton lk_link_button" :class="route.path=='/lk'?'currentLink':''" href="/lk">Личный кабинет</NuxtLink>
