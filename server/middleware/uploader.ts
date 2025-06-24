@@ -24,7 +24,7 @@ const useFiles = async (event: any) => {
         console.log(`File [${name}]: filename: ${filename}, encoding: ${encoding}, mimeType: ${mimeType}`)
         console.log(path.join(process.cwd(), 'public/img'))
 
-        const saveTo = process.env.NODE_ENV !== 'production' ? path.join(process.cwd(), 'public/img', `${newFileName}`) : path.join(process.cwd(), '/root/public/img', `${newFileName}`)
+        const saveTo = process.env.NODE_ENV !== 'production' ? path.join(process.cwd(), 'public/img', `${newFileName}`) : path.join('/root/public/img', `${newFileName}`)
         // console.log('saveTo', saveTo)
         // file.pipe(fs.createWriteStream(saveTo))
         
