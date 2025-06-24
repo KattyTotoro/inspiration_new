@@ -22,8 +22,9 @@ const useFiles = async (event: any) => {
         const enName = info.filename.split('.')[0].match(/[a-zA-Z0-9]/g)?.join('') || ''
         const newFileName = Date.now() + enName + '.webp'
         console.log(`File [${name}]: filename: ${filename}, encoding: ${encoding}, mimeType: ${mimeType}`)
-        console.log(path.join(process.cwd(), '/public/img'))
-        const saveTo = path.join(process.cwd(), '/public/img', `${newFileName}`)
+        console.log(path.join(process.cwd(), 'public/img'))
+
+        const saveTo = process.env.NODE_ENV !== 'production' ? path.join(process.cwd(), 'public/img', `${newFileName}`) : path.join(process.cwd(), '/root/public/img', `${newFileName}`)
         // console.log('saveTo', saveTo)
         // file.pipe(fs.createWriteStream(saveTo))
         
