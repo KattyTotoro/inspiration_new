@@ -44,6 +44,12 @@ export default defineNuxtConfig({
     }
   },
   image: {
+    domains: [
+      'inspirationworld.ru'
+    ],
+    alias: {
+      inspirationworld: 'https://inspirationworld.ru'
+    }
   },
   prisma: {
     generateClient: true,
