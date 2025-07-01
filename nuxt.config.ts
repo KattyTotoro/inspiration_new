@@ -44,7 +44,6 @@ export default defineNuxtConfig({
     }
   },
   image: {
-    dir: process.env.NODE_ENV !== 'production' ? path.join(process.cwd(), 'public') : '/root/public/',
   },
   prisma: {
     generateClient: true,
