@@ -49,7 +49,8 @@ export default defineNuxtConfig({
     ],
     alias: {
       inspirationworld: 'https://inspirationworld.ru'
-    }
+    },
+    dir: 'public'
   },
   prisma: {
     generateClient: true,
