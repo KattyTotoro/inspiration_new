@@ -1,6 +1,5 @@
 <template>
     <section class="content">
-       
         <div class="blockList">
         <div>
             <h2>Композиция 8</h2>

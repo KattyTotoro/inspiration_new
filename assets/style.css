@@ -6,7 +6,7 @@
 
 header {
     position: relative;
-    height: 750px;
+    height: 700px;
     background: url(/img/mountain3.png) top/cover no-repeat;
 }
 
@@ -123,7 +123,7 @@ nav:hover {
     bottom: 0%;
     display: flex;
     gap: 1px;
-    /* top: 253px; */
+    /* padding-top: 553px; */
     margin-left: 200px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -166,7 +166,7 @@ a.topMenuButton {
 .content {
     margin-left: 200px;
     font-family: sans-serif;
-    border: 2px solid #dfeffe;
+    border: 2px solid #dfeffe5b;
     box-shadow: 0 20px 30px rgb(134, 134, 134);
     border-top: none;
     padding: 50px;
@@ -415,6 +415,9 @@ footer {
     border-radius: 8px;
 }
 
+#menu {
+    transform: translateY(-100px);
+}
 
 
 @media screen and (max-width:1330px) {

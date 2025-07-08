@@ -1,6 +1,5 @@
 <template>
     <section class="content">
-
 <h1>Сайт Вдохновение. Транслирование знаний.</h1>
 <strong>Путеводители среди знаний.</strong>
 

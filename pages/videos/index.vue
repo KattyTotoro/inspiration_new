@@ -1,7 +1,6 @@
 <template>
 
   <section class="content">
-
       <h1><strong>Видео.</strong></h1>
 
       <!-- Блок с публикациями -->

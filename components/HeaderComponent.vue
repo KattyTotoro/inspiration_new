@@ -1,25 +1,25 @@
 <template>
 
-<header>
+<header :style="route.path=='/'?'':'height:300px'">
 
-<div style="position: relative;">
+<!-- <div style="position: relative;">
+</div> -->
 <h1 class="h1Fly">Вдохновение</h1>
-</div>
 
-<NuxtLink class="topMenuButton lk_link_button" :class="route.path=='/lk'?'currentLink':''" href="/lk">Личный кабинет</NuxtLink>
+<NuxtLink class="topMenuButton lk_link_button" :class="route.path=='/lk'?'currentLink':''" to="/lk">Личный кабинет</NuxtLink>
 <!-- Кнопка выхода из личного кабинета -->
 <button v-if="userStore.user?.id" @click="handleLogout" class="logout_button">Выйти</button> 
 
 <div class="topMenu">
 
-    <NuxtLink class="topMenuButton" :class="route.path=='/'?'currentLink':''" href="/">Главная</NuxtLink>
-    <NuxtLink class="topMenuButton" :class="route.path=='/articles'?'currentLink':''" href="/articles">Статьи</NuxtLink>
-    <NuxtLink class="topMenuButton" :class="route.path=='/videos'?'currentLink':''" href="/videos">Видео</NuxtLink>
-    <NuxtLink class="topMenuButton" :class="route.path=='/music'?'currentLink':''" href="/music">Музыка</NuxtLink>
-    <NuxtLink class="topMenuButton" :class="route.path=='/recipes'?'currentLink':''" href="/recipes">Рецепты</NuxtLink>
-    <NuxtLink class="topMenuButton" :class="route.path=='/trips'?'currentLink':''" href="/trips">Путешествия</NuxtLink>
-    <NuxtLink class="topMenuButton" :class="route.path=='/podcast'?'currentLink':''" href="/podcast">Подкаст</NuxtLink>
-    <NuxtLink class="topMenuButton" :class="route.path=='/posts'?'currentLink':''" href="/posts">Публикации</NuxtLink>
+    <NuxtLink class="topMenuButton" :class="route.path=='/'?'currentLink':''" to="/">Главная</NuxtLink>
+    <NuxtLink class="topMenuButton" :class="route.path=='/articles'?'currentLink':''" to="/articles">Статьи</NuxtLink>
+    <NuxtLink class="topMenuButton" :class="route.path=='/videos'?'currentLink':''" to="/videos">Видео</NuxtLink>
+    <NuxtLink class="topMenuButton" :class="route.path=='/music'?'currentLink':''" to="/music">Музыка</NuxtLink>
+    <NuxtLink class="topMenuButton" :class="route.path=='/recipes'?'currentLink':''" to="/recipes">Рецепты</NuxtLink>
+    <NuxtLink class="topMenuButton" :class="route.path=='/trips'?'currentLink':''" to="/trips">Путешествия</NuxtLink>
+    <NuxtLink class="topMenuButton" :class="route.path=='/podcast'?'currentLink':''" to="/podcast">Подкаст</NuxtLink>
+    <NuxtLink class="topMenuButton" :class="route.path=='/posts'?'currentLink':''" to="/posts">Публикации</NuxtLink>
 
 
 </div>

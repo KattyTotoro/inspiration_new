@@ -1,7 +1,6 @@
 <template>
 
   <section class="content">
-    
     <h1 class="lk_h1">Личный кабинет</h1>
     <div class="nickname" v-if="userStore.user">
       <p>Ваш ник: </p>
