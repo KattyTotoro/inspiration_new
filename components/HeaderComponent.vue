@@ -2,13 +2,15 @@
 
 <header :style="route.path=='/'?'':'height:300px'">
 
-<!-- <div style="position: relative;">
-</div> -->
+<div style="position: relative;">
 <h1 class="h1Fly">Вдохновение</h1>
+</div>
 
-<NuxtLink class="topMenuButton lk_link_button" :class="route.path=='/lk'?'currentLink':''" to="/lk">Личный кабинет</NuxtLink>
+<!-- Кнопка входа в личный кабинет -->
+<NuxtLink class="lk_link_button" :class="route.path=='/lk'?'currentLink':''" to="/lk">Личный кабинет</NuxtLink>
+
 <!-- Кнопка выхода из личного кабинета -->
-<button v-if="userStore.user?.id" @click="handleLogout" class="logout_button">Выйти</button> 
+<button v-if="userStore.user?.id" @click="handleLogout" class="logout_button">Выход</button> 
 
 <div class="topMenu">
 

@@ -6,7 +6,7 @@
 
 header {
     position: relative;
-    height: 700px;
+    height: 750px;
     background: url(/img/mountain3.png) top/cover no-repeat;
 }
 
@@ -131,7 +131,6 @@ nav:hover {
 /* Заголовок кнопки */
 .topMenuButton {
     display: block;
-    /* width: 200px; */
     flex: 1;
     background: #dfeffe78;
     padding: 20px 25px;
@@ -152,7 +151,6 @@ nav:hover {
 a.topMenuButton {
     text-decoration: none;
     color: rgb(40, 65, 91);
-    /* color: #fff; */
     padding: 20px 25px;
 }
 
@@ -165,6 +163,7 @@ a.topMenuButton {
 /* Содержимое вкладки */
 .content {
     margin-left: 200px;
+    font-size: 1.2rem;
     font-family: sans-serif;
     border: 2px solid #dfeffe5b;
     box-shadow: 0 20px 30px rgb(134, 134, 134);
@@ -174,7 +173,7 @@ a.topMenuButton {
 }
 
 .content h1 {
-    background-image: linear-gradient(#2e9aff71, #f498ae65);
+    background-image: linear-gradient(rgba(243, 219, 82, 0.418), #85bff571 10% 80%, rgba(150, 242, 150, 0.555));
     margin-bottom: 30px;
     padding: 20px;
     font-size: 2rem;
@@ -266,12 +265,31 @@ footer {
     border-radius: 5px;
 }
 
+/* Кнопка Личный кабинет (справа вверху) */
 .lk_link_button {
     position: absolute;
-    top: 10%;
-    right: 5%;
+    top: 10px;
+    right: 10px;
+    width: 210px;
+    background: #dfeffe78;
+    padding: 10px;
     border: 3px solid #dfeffe;
     border-radius: 10px;
+    text-align: center;
+    font-size: 1.3rem;
+    box-shadow: 0 0 20px whitesmoke;
+    text-shadow: 2px 2px 2px rgba(185, 206, 224, 0.4);
+}
+
+a.lk_link_button {
+    text-decoration: none;
+    color: rgb(40, 65, 91);
+    padding: 10px;
+}
+
+.lk_link_button:hover {
+    cursor: pointer;
+    box-shadow: 0 0 7px 1px rgba(56, 128, 205, 0.893) inset;
 }
 
 .lk_entrance {
@@ -367,25 +385,28 @@ footer {
 
 .logout_button {
     position: absolute;
-    top: 100px;
-    right: 5%;
-    display: inline-block;
-    width: 200px;
+    top: 65px;
+    right: 10px;
+    width: 210px;
+    background: #dfeffe78;
+    color: rgb(40, 65, 91);
+    font-size: 1.3rem;
     border-radius: 10px;
     padding: 10px;
+    border: 3px solid #dfeffe;
+    border-radius: 10px;
     text-align: center;
-    background-color: rgb(100, 158, 206);
-    font-size: 22px;
-    font-weight: 600;
-    cursor: pointer;
+    cursor: pointer;    
+    text-shadow: 2px 2px 2px rgba(185, 206, 224, 0.4);
     box-shadow: 0 0 20px whitesmoke;
-    transition: background-color 0.3s ease;
+    transition: 0.5s;
 }
 
 .logout_button:hover {
-    background-color: #c82333;
+    background-color: #ebc108d3;
     color: #fff;
     box-shadow: 0 0 7px 1px rgba(246, 214, 9, 0.893) inset;
+    transition: 0.3s;
 }
 
 .comments {
@@ -423,15 +444,12 @@ footer {
 @media screen and (max-width:1330px) {
 
     a.topMenuButton {
-        padding: 10px;
+        padding: 20px;
     }
 }
 
 
 @media screen and (max-width:1250px) {
-    header {
-        height: 200px;
-    }
 
     header h1 {
         font-size: 5rem;
@@ -515,6 +533,10 @@ footer {
 }
 
 @media screen and (max-width:971px) {
+    
+    header {
+        height: 600px;
+    }
 
     @keyframes h1Fly {
         from {
@@ -540,6 +562,10 @@ footer {
 
 
 @media screen and (max-width:769px) {
+
+    header {
+        height:450px;
+    }
 
     header h1 {
         font-size: 4rem;
@@ -575,8 +601,34 @@ footer {
 }
 
 @media screen and (max-width:600px) {
+
+    header {
+        height: 400px;
+    }
+
     .lk_link_button {
         width: 110px;
     }
 
+    .logout_button {
+        width: 110px;
+        top: 90px;
+    }
+
+}
+
+@media screen and (max-width:450px) {
+
+    header {
+        height: 350px;
+    }
+
+}
+
+@media screen and (max-width:360px) {
+
+    header {
+        /* height: 400px; */
+        background: url(/img/mountain3.png) center/cover no-repeat;
+    }
 }
