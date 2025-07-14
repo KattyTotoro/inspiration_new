@@ -4,10 +4,18 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* body {
+    background: url(/img/mountain3.png) -2% -35%/108% no-repeat;
+} */
+
+body {
+    background: url(/img/sky.jpg) top/cover no-repeat;
+}
+
 header {
     position: relative;
     height: 750px;
-    background: url(/img/mountain3.png) top/cover no-repeat;
+    background: url(/img/mountain3.png) 0% 25%/108% no-repeat;
 }
 
 header h1 {
@@ -24,7 +32,7 @@ header h1 {
 }
 
 .h1Fly {
-    animation: h1Fly 1s 2s ease-in-out forwards;
+    animation: h1Fly 1s 1s ease-in-out forwards;
 }
 
 @keyframes h1Fly {
@@ -34,8 +42,8 @@ header h1 {
     }
 
     to {
-        top: 60px;
-        left: 18%;
+        top: 8px;
+        left: 9%;
     }
 }
 
@@ -463,7 +471,7 @@ a.lk_link_button {
     
         to {
             top: 40px;
-            left: 18%;
+            left: 10%;
         }
     }
 
@@ -500,7 +508,7 @@ a.lk_link_button {
     }
 }
 
-@media screen and (max-width:1039px) {
+@media screen and (max-width:1047px) {
 
     @keyframes h1Fly {
         from {
@@ -512,6 +520,11 @@ a.lk_link_button {
             top: 13px;
             left: 13%;
         }
+    }
+
+    header {
+        height: 650px;
+        background: url(/img/mountain3.png) 0% 0%/108% no-repeat;
     }
 
     .content {
@@ -529,10 +542,6 @@ a.lk_link_button {
 
 @media screen and (max-width:971px) {
     
-    header {
-        height: 600px;
-    }
-
     @keyframes h1Fly {
         from {
             top: -120px;
@@ -543,6 +552,10 @@ a.lk_link_button {
             top: 8px;
             left: 5%;
         }
+    }
+
+    header {
+        height: 600px;
     }
 
     a.topMenuButton {
@@ -556,10 +569,10 @@ a.lk_link_button {
 }
 
 
-@media screen and (max-width:769px) {
+@media screen and (max-width:840px) {
 
     header {
-        height:450px;
+        height: 500px;
     }
 
     header h1 {
@@ -583,7 +596,11 @@ a.lk_link_button {
     }
 }
 
-@media screen and (max-width:671px) {
+@media screen and (max-width:691px) {
+
+    header {
+        height: 450px;
+    }
 
     header h1 {
         font-size: 3.5rem;
@@ -599,7 +616,7 @@ a.lk_link_button {
 
 }
 
-@media screen and (max-width:600px) {
+@media screen and (max-width:637px) {
 
     header {
         height: 400px;
@@ -616,23 +633,29 @@ a.lk_link_button {
 
 }
 
-@media screen and (max-width:531px) {
+@media screen and (max-width:551px) {
+
+    header {
+        height: 350px;
+    }
 
     a.topMenuButton {
         padding: 7px;
     }
+
     .lk_link_button {
         padding: 7px;
     }
+
     .logout_button {
         padding: 7px;
     }
 }
 
-@media screen and (max-width:451px) {
+@media screen and (max-width:501px) {
 
     header {
-        height: 350px;
+        height: 300px;
     }
 
     header h1 {
@@ -657,9 +680,88 @@ a.lk_link_button {
 
 }
 
-@media screen and (max-width:360px) {
+@media screen and (max-width:424px) {
+
+    a.topMenuButton {
+        padding: 5px;
+    }
+
+    .lk_link_button {
+        top: 5px;
+        right: 5px;
+        width: 100px;
+        padding: 5px;
+    }
+
+    .logout_button {
+        top: 80px;
+        right: 5px;
+        width: 100px;
+        padding: 5px;
+    }
 
     .content {
         padding: 1px;
     }
+
+}
+
+@media screen and (max-width:414px) {
+
+    header {
+        height: 360px;
+    }
+}
+
+@media screen and (max-width:404px) {
+
+    header {
+        height: 362px;
+    }
+
+    a.topMenuButton {
+        padding: 5px 20px;
+    }
+}
+
+@media screen and (max-width:401px) {
+
+    header {
+        height: 360px;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width:399px) {
+
+    header {
+        height: 321px;
+    }
+
+    a.topMenuButton {
+        padding: 4px;
+    }
+}
+
+@media screen and (max-width:363px) {
+
+    header {
+        height: 326px;
+    }
+
+        @keyframes h1Fly {
+        from {
+            top: -120px;
+            left: -50%;
+        }
+    
+        to {
+            top: 5px;
+            left: 4%;
+        }
+    }
+
 }
