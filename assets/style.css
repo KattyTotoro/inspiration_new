@@ -762,7 +762,7 @@ a.lk_link_button {
         height: 326px;
     }
 
-        @keyframes h1Fly {
+    @keyframes h1Fly {
         from {
             top: -120px;
             left: -50%;
@@ -771,6 +771,46 @@ a.lk_link_button {
         to {
             top: 5px;
             left: 4%;
+        }
+    }
+
+    @media screen and (max-width:345px) {
+
+        header {
+            height: 320px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        @keyframes h1Fly {
+            from {
+                top: -120px;
+                left: -50%;
+            }
+        
+            to {
+                top: 2px;
+                left: 4%;
+            }
+        }
+
+        a.topMenuButton {
+             padding: 5px 10px;
+        }
+
+        .lk_link_button {
+            width: 80px;
+            padding: 3px;
+            font-size: 1rem;
+        }
+
+        .logout_button {
+            top: 72px;
+            width: 80px;
+            padding: 3px;
+            font-size: 1rem;
         }
     }
 
