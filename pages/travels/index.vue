@@ -1,30 +1,30 @@
 <template>
-    <section class="content">
-      <h1>Статьи<br>
-      <strong>Путеводители среди знаний</strong></h1>
 
-<div>
+  <section class="content">
+      <h1><strong>Путешествия</strong></h1>
 
-  <p v-if="!posts?.length">Публикаций пока нет</p>
-  
-  <div v-else class="blockList">
-    <div class="post" v-for="post of posts" :key="post.id">
-      <NuxtImg :src="`${post.img}`" sizes="300px"/>
-      <div>
-        <h2><NuxtLink :to="`/posts/${post.id}_${post.title_en}`">{{ post.title }}</NuxtLink></h2>
-        <p>{{ post.preview }}</p>
+      <!-- Блок с публикациями -->
+      <p v-if="!posts?.length">Публикаций пока нет</p>
+      <div v-else class="blockList">
+          <div class="post" v-for="post of posts" :key="post.id">
+              <NuxtImg :src="`${post.img}`" sizes="200px" />
+              <div>
+                <h2>
+                <NuxtLink :to="`/${post.rubric.title_en.toLowerCase()}/${post.id}_${post.title_en}`">{{ post.title }}</NuxtLink>
+                </h2>
+                <p>{{ post.preview }}</p>
+              </div>
+          </div>
       </div>
-    </div>
-  </div>
 
-</div>
+  </section>
 
-    </section>
+
 </template>
 
 
+
 <script setup lang="ts">
-// import { usePosts } from '~/stores/posts';
 useSeoMeta({
   title: 'Сайт Вдохновение. Путеводитель в мире знаний.',
   ogTitle: 'Сайт Вдохновение. Путеводитель в мире знаний.',
@@ -34,21 +34,6 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
-const {data} = await useFetch('/api/post/by_rubrics/1')
+const { data } = await useFetch('/api/post/by_rubrics/5')
 const posts = ref(data.value?.posts)
-
 </script>
-
-
-<style scoped>
-
-/* .grid {
-  display: grid;
-  grid-template-columns: 300px 300px 300px;
-  gap: 20px;
-  margin: 50px auto;
-  width: 940px;
-} */
-
-
-</style>

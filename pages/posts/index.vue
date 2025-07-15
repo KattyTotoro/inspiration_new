@@ -11,8 +11,10 @@
   <div v-else class="blockList">
     <div class="post" v-for="post of posts" :key="post.id">
       <NuxtImg :src="`${post.img}`" sizes="300px"/>
-      <h2><NuxtLink :to="`/${post.rubric.title_en.toLowerCase()}/${post.id}_${post.title_en}`">{{ post.title }}</NuxtLink></h2>
-      <p>{{ post.preview }}</p>
+      <div>
+        <h2><NuxtLink :to="`/${post.rubric.title_en.toLowerCase()}/${post.id}_${post.title_en}`">{{ post.title }}</NuxtLink></h2>
+        <p>{{ post.preview }}</p>
+      </div>
     </div>
   </div>
 

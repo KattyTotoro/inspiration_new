@@ -1,4 +1,10 @@
 <template>
 
-    <h1>Hello from about page</h1>
+    <section class="content">
+
+    <h1>Приветствуем</h1>
+
+    <h2>О нас:</h2>
+    
+    </section>
 </template>

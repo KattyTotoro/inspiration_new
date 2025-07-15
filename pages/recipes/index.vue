@@ -9,10 +9,10 @@
           <div class="post" v-for="post of posts" :key="post.id">
               <NuxtImg :src="`${post.img}`" sizes="200px" />
               <div>
-              <h2>
-                  <NuxtLink :to="`/${post.rubric.title_en.toLowerCase()}/${post.id}_${post.title_en}`">{{ post.title }}</NuxtLink>
-              </h2>
-              <p>{{ post.preview }}</p>
+                <h2>
+                <NuxtLink :to="`/${post.rubric.title_en.toLowerCase()}/${post.id}_${post.title_en}`">{{ post.title }}</NuxtLink>
+                </h2>
+                <p>{{ post.preview }}</p>
               </div>
           </div>
       </div>

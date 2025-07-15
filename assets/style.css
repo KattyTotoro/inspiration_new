@@ -213,7 +213,12 @@ a.topMenuButton {
 .post {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
+}
+
+.post img {
+    width: 20%;
+    height: auto;
 }
 
 .post a {
