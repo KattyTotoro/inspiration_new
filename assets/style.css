@@ -221,6 +221,10 @@ a.topMenuButton {
     height: auto;
 }
 
+.post .postPreview {
+    flex: 1;
+}
+
 .post a {
     text-decoration: underline;
     color: blue;
