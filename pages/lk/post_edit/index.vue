@@ -8,9 +8,11 @@
         <p v-if="!posts?.length">Публикаций пока нет</p>
         <div v-else class="blockList">
           <div class="post" v-for="post of posts" :key="post.id">
-            <NuxtImg :src="`img/${post.img}`" sizes="300px"/>
-            <h2><NuxtLink :to="`/lk/post_edit/${post.id}`">{{ post.title }}</NuxtLink></h2>
-            <p>{{ post.preview }}</p>
+          <div class="postPreview">
+              <NuxtImg :src="`img/${post.img}`" sizes="300px"/>
+              <h2><NuxtLink :to="`/lk/post_edit/${post.id}`">{{ post.title }}</NuxtLink></h2>
+              <p>{{ post.preview }}</p>
+            </div>
           </div>
         </div>
       </div>

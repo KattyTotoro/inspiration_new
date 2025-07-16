@@ -52,10 +52,12 @@
       <div class="blockList">
         <div class="post" v-for="post of posts" :key="post.id">
           <NuxtImg :src="`${post.img}`" sizes="300px" />
-          <h2>
-            <NuxtLink :to="`/lk/post_edit/${post.id}`">{{ post.title }}</NuxtLink>
-          </h2>
-          <p>{{ post.preview }}</p>
+          <div class="postPreview">
+            <h2>
+              <NuxtLink :to="`/lk/post_edit/${post.id}`">{{ post.title }}</NuxtLink>
+            </h2>
+            <p>{{ post.preview }}</p>
+          </div>
         </div>
       </div>
     </div>
