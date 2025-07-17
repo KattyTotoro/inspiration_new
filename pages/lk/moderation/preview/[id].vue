@@ -35,6 +35,7 @@ async function approve() {
         body: JSON.stringify({token: userStore.user?.token})
     })
     const result = await resp.json()
+    await navigateTo(`/lk/moderation`)
     //console.log(result)
 }
 </script>

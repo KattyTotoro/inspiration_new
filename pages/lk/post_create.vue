@@ -153,7 +153,7 @@ const upload = async () => {
 const save = async () => {
   if (post.value && userStore.user?.id) {
     post.value.title_en = translit(post.value.title)
-    post.value.text = editor.value?.getHTML().replaceAll('<p></p>', '<br>') || ''
+    post.value.text = editor.value?.getHTML().replaceAll('<br>', '').replaceAll('<p></p>', '<br>') || ''
     const firstImgStartIndex = post.value.text.indexOf('<img src="')
     if (firstImgStartIndex!=-1) {
       const firstImgEndIndex = post.value.text.indexOf('"',firstImgStartIndex+10)

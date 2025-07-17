@@ -20,7 +20,10 @@ export default defineEventHandler(async (event) => {
                 },
                 rubric: true,
             },
-            where
+            where,
+            orderBy: {
+                created_at: 'desc'
+            }
         })
         return {posts, ok: true}
     } catch(e) {

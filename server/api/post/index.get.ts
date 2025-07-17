@@ -15,6 +15,9 @@ export default defineEventHandler(async (event) => {
             },
             where: {
                 approved:true,
+            },
+            orderBy: {
+                created_at: 'desc'
             }
         })
         return {posts, ok: true}
