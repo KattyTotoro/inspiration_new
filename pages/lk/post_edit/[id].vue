@@ -2,13 +2,11 @@
 <section v-if="post" class="content tt">
     <input class="myEditor" type="text" v-model="post.title">
 
-    <template v-if="!post.approved">
-        <label class="label_rubric_create" for="rubric">Выбор рубрики: </label>
-        <select class="rubric_create" name="rubric" id="rubric" v-model="rubric_id">
-            <option :value="rubric.id" v-for="rubric of appStore.rubrics" :key="rubric.id">{{ rubric.title }}</option>
-        </select>
-    </template>
-
+    <label class="label_rubric_create" for="rubric">Выбор рубрики: </label>
+    <select class="rubric_create" name="rubric" id="rubric" v-model="post.rubric_id">
+        <option :value="rubric.id" v-for="rubric of appStore.rubrics" :key="rubric.id">{{ rubric.title }}</option>
+    </select>
+    
     <div v-if="editor">
     <button
         @click="editor.chain().focus().toggleBold().run()"
