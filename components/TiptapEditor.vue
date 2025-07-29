@@ -24,8 +24,7 @@
     <button @click="editor.chain().focus().clearNodes().run()">
       clear nodes
     </button>
-    <button @click="editor.chain().focus().setParagraph().run()"
-      :class="{ 'is-active': editor.isActive('paragraph') }">
+    <button @click="editor.chain().focus().setParagraph().run()" :class="{ 'is-active': editor.isActive('paragraph') }">
       paragraph
     </button>
 
@@ -83,33 +82,112 @@
       redo
     </button>
   </div>
+
+  <bubble-menu :editor="editor" v-if="editor">
+    <div class="bubble-menu">
+      <button @click="editor.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
+        Bold
+      </button>
+      <button
+        @click="editor.chain().focus().toggleItalic().run()"
+        :class="{ 'is-active': editor.isActive('italic') }"
+      >
+        Italic
+      </button>
+      <button
+        @click="editor.chain().focus().toggleStrike().run()"
+        :class="{ 'is-active': editor.isActive('strike') }"
+      >
+        Strike
+      </button>
+    </div>
+  </bubble-menu>
+
+  <floating-menu :editor="editor" v-if="editor">
+    <div class="floating-menu">
+      <button
+        @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
+        :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }"
+      >
+        H1
+      </button>
+      <button
+        @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
+        :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }"
+      >
+        H2
+      </button>
+      <button
+        @click="editor.chain().focus().toggleBulletList().run()"
+        :class="{ 'is-active': editor.isActive('bulletList') }"
+      >
+        Bullet list
+      </button>
+    </div>
+  </floating-menu>
+
   <editor-content :editor="editor" />
+
+  <div>
+    <form method="post" @submit.prevent="upload">
+      <input type="text" name="alt" v-model="alt" placeholder="Alt">
+      <input type="file" ref="file" placeholder="Изображение">
+      <input type="submit" value="Загрузить">
+    </form>
+  </div>
+
+  <!-- Кнопка сохранения -->
+  <button @click="save">Сохранить пост</button>
+
 </template>
 
-<script>
-  import { Editor, EditorContent } from '@tiptap/vue-3'
-  import StarterKit from '@tiptap/starter-kit'
+<script setup lang="ts">
+import { Editor, EditorContent, BubbleMenu, FloatingMenu } from '@tiptap/vue-3'
+import StarterKit from '@tiptap/starter-kit'
+import Image from '@tiptap/extension-image'
 
-  export default {
-    components: {
-      EditorContent,
-    },
+const editor = ref(null as any)
+const emit = defineEmits(['save'])
+const props = defineProps(['text'])
 
-    data() {
-      return {
-        editor: null,
-      }
-    },
+const alt = ref('')
+const file = ref(null)
 
-    mounted() {
-      this.editor = new Editor({
-        content: "<p>I'm running Tiptap with Vue.js. 🎉</p>",
-        extensions: [StarterKit],
-      })
-    },
+const save = () => {
+  emit('save', { html: editor.value?.getHTML() })
+}
 
-    beforeUnmount() {
-      this.editor.destroy()
-    },
+const upload = async () => {
+  const fileref = file.value as never as HTMLInputElement
+  const fD = new FormData()
+  if (fileref.files) {
+    fD.append('alt', alt.value)
+    fD.append('img', fileref.files[0])
+    const data = await $fetch('/api/img', {
+      method: 'POST',
+      body: fD
+    })
+    alt.value = ''
+    fileref.value = ''
+    setTimeout(() => {
+      editor.value?.chain().focus().setImage({ src: data.url, alt: alt.value }).run()
+    }, 500)
   }
+}
+
+onMounted(() => {
+  editor.value = new Editor({
+    content: props.text || '',
+    extensions: [StarterKit, Image, ],
+  })
+})
+
+onBeforeUnmount(() => {
+  editor.value.destroy()
+})
+
 </script>
+
+<style>
+@import url(~/assets/tiptap.css);
+</style>

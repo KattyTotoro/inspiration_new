@@ -18,10 +18,12 @@
 }
 
 .tiptap {
-    min-height: 1000px;
+    background-color: rgb(201, 200, 200);
+    min-height: 500px;
     margin-top: 20px;
     border: 2px solid grey;
     border-radius: 10px;
+    padding: 10px 20px;
 }
 
 .tiptap p {
@@ -90,3 +92,50 @@
     transform: scale(1.1);
     transition: 0.5s;
 }
+
+.bubble-menu {
+  background-color: var(--white);
+  border: 1px solid var(--gray-1);
+  border-radius: 0.7rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  padding: 0.2rem;
+}
+
+.bubble-menu button {
+    background-color: white;
+}
+.bubble-menu button:hover {
+    background-color: var(--gray-3);
+}
+
+.bubble-menu button.is-active {
+    background-color: var(--purple);
+}
+.bubble-menu button.is-active:hover {
+background-color: var(--purple-contrast);
+}
+
+
+.floating-menu {
+  display: flex;
+  background-color: var(--gray-3);
+  padding: 0.1rem;
+  border-radius: 0.5rem;
+}
+.floating-menu button {
+    background-color: unset;
+    padding: 0.275rem 0.425rem;
+    border-radius: 0.3rem;
+}
+.floating-menu button:hover {
+      background-color: var(--gray-3);
+    }
+
+.floating-menu button.is-active {
+      background-color: var(--white);
+      color: var(--purple);
+}
+.floating-menu button.is-active:hover {
+        color: var(--purple-contrast);
+      }
