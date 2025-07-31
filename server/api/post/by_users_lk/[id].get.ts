@@ -17,6 +17,9 @@ export default defineEventHandler(async (event) => {
                 },
                 where: {
                     author_id: +id,
+                },
+                orderBy: {
+                created_at: 'desc'
                 }
             })
             return {posts, ok: true}

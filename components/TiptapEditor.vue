@@ -100,6 +100,18 @@
       >
         Strike
       </button>
+      <button
+        @click="editor.chain().focus().toggleHighlight().run()"
+        :class="{ 'is-active': editor.isActive('highlight') }"
+      >
+        Маркер
+      </button>
+      <button
+        @click="editor.chain().focus().toggleUnderline().run()"
+        :class="{ 'is-active': editor.isActive('underline') }"
+      >
+        Подчеркнуть
+      </button>
     </div>
   </bubble-menu>
 
@@ -143,6 +155,8 @@
 
 <script setup lang="ts">
 import { Editor, EditorContent, BubbleMenu, FloatingMenu } from '@tiptap/vue-3'
+import Highlight from '@tiptap/extension-highlight'
+import Underline from '@tiptap/extension-underline'
 import StarterKit from '@tiptap/starter-kit'
 import Image from '@tiptap/extension-image'
 
@@ -178,7 +192,7 @@ const upload = async () => {
 onMounted(() => {
   editor.value = new Editor({
     content: props.text || '',
-    extensions: [StarterKit, Image, ],
+    extensions: [StarterKit, Image, Highlight, Underline],
   })
 })
 

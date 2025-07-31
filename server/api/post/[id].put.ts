@@ -21,20 +21,20 @@ export default defineEventHandler(async (event) => {
         let tmpText = ''
         let line = 0
         for (let word of textArr) {
-            if (word.length < 20 && (tmpText.length+word.length) < 20) {
+            if (word.length < 20 && (tmpText.length + word.length) < 20) {
                 if (tmpText) {
-                    tmpText += ' '+word
+                    tmpText += ' ' + word
                 } else {
                     tmpText += word
                 }
             } else {
-                text += `<text x="5%" y="${30 + line*8}%" text-anchor="left" dy="0.25em" font-size="4em" fill="#000">${tmpText}</text>`
+                text += `<text x="5%" y="${30 + line * 8}%" text-anchor="left" dy="0.25em" font-size="4em" fill="#000">${tmpText}</text>`
                 line++
                 tmpText = word
             }
         }
-        text += `<text x="5%" y="${30 + line*8}%" text-anchor="left" dy="0.25em" font-size="4em" fill="#000">${tmpText}</text>`
-        
+        text += `<text x="5%" y="${30 + line * 8}%" text-anchor="left" dy="0.25em" font-size="4em" fill="#000">${tmpText}</text>`
+
         const svg = `
         <svg width="${width}" height="${height}" viewBox="0 0 ${height} ${height + 2}">
             ${text}
@@ -53,16 +53,16 @@ export default defineEventHandler(async (event) => {
                 background: { r: 255, g: 255, b: 255, alpha: 1 },
             }
         })
-        .composite([
-            { input: path.join(process.cwd(), '/public/img', `bg.jpg`), top: 0, left: 0, },
-            {
-                input: svg_buffer,
-                top: 0,
-                left: 0,
-            }
-        ])
-        .webp()
-        .toFile(saveTo)
+            .composite([
+                { input: path.join(process.cwd(), '/public/img', `bg.jpg`), top: 0, left: 0, },
+                {
+                    input: svg_buffer,
+                    top: 0,
+                    left: 0,
+                }
+            ])
+            .webp()
+            .toFile(saveTo)
         // await sharp({
         //     text: {
         //       text: label,
@@ -75,26 +75,26 @@ export default defineEventHandler(async (event) => {
         // ])
         // .webp()
         // .toFile(saveTo)
-        data.img = '/img/'+newFileName
+        data.img = '/img/' + newFileName
     }
 
     if (id) {
         try {
             await prisma.post.update({
-                data:{
+                data: {
                     ...data,
                     approved: false,
-                }, 
+                },
                 where: {
                     id: +id
                 }
             })
-            return {ok: true}
-        } catch(e) {
+            return { ok: true }
+        } catch (e) {
             console.log(e)
-            return {ok: false, e}
+            return { ok: false, e }
         }
     } else {
-        return {ok: false}
+        return { ok: false }
     }
 })

@@ -18,7 +18,7 @@
 }
 
 .tiptap {
-    background-color: rgb(201, 200, 200);
+    background-color: rgba(241, 240, 240, 0.858);
     min-height: 500px;
     margin-top: 20px;
     border: 2px solid grey;
@@ -139,3 +139,10 @@ background-color: var(--purple-contrast);
 .floating-menu button.is-active:hover {
         color: var(--purple-contrast);
       }
+
+mark {
+    background-color: #faf594;
+    border-radius: 0.4rem;
+    box-decoration-break: clone;
+    padding: 0.1rem 0.3rem;
+}
