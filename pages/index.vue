@@ -16,10 +16,6 @@
 </p>
 </div>
 
-<video>
-    <source src="https://disk.yandex.ru/d/LADtnZajP19xeQ/JS/%D0%92%D0%B8%D0%B4%D0%B5%D0%BE/0%20%D0%92%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5.mp4" type="video/webm">
-</video>
-
         <div class="blockList">
         <h2>Все публикации:</h2>
             <div>
