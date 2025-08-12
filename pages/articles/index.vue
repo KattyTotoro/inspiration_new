@@ -9,7 +9,7 @@
 
   <div v-else class="blockList">
     <div class="post" v-for="post, index of posts" :key="post.id">
-      <NuxtImg v-if="index==0||index==1" :src="`${post.img}`" sizes="100vw sm:50vw md:400px" preload />
+      <NuxtImg v-if="[0,1].includes(index)" :src="`${post.img}`" sizes="100vw sm:50vw md:400px" preload />
       <NuxtImg v-else :src="`${post.img}`" sizes="100vw sm:50vw md:400px" loading="lazy"/>
       <div class="postPreview">
         <h2><NuxtLink :to="`/posts/${post.id}_${post.title_en}`">{{ post.title }}</NuxtLink></h2>

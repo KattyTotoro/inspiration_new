@@ -20,9 +20,10 @@ header {
 header {
     background: url('/_ipx/w_1920&q_70&f_webp/img/mountain3.png') 0% 25%/108% no-repeat;
 }
+
 @media screen and (max-width:1366px) {
     body {
-        background: url('/_ipx/w_1920&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
+        background: url('/_ipx/w_1366&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
     }
     header {
         background: url('/_ipx/w_1366&q_70&f_webp/img/mountain3.png') 0% 25%/108% no-repeat;
