@@ -8,8 +8,9 @@
   <p v-if="!posts?.length">Публикаций пока нет</p>
 
   <div v-else class="blockList">
-    <div class="post" v-for="post of posts" :key="post.id">
-      <NuxtImg :src="`${post.img}`" sizes="300px" loading="lazy"/>
+    <div class="post" v-for="post, index of posts" :key="post.id">
+      <NuxtImg v-if="index==0||index==1" :src="`${post.img}`" sizes="100vw sm:50vw md:400px" preload />
+      <NuxtImg v-else :src="`${post.img}`" sizes="100vw sm:50vw md:400px" loading="lazy"/>
       <div class="postPreview">
         <h2><NuxtLink :to="`/posts/${post.id}_${post.title_en}`">{{ post.title }}</NuxtLink></h2>
         <p>{{ post.preview }}</p>
@@ -39,16 +40,3 @@ const posts = ref(data.value?.posts)
 
 </script>
 
-
-<style scoped>
-
-/* .grid {
-  display: grid;
-  grid-template-columns: 300px 300px 300px;
-  gap: 20px;
-  margin: 50px auto;
-  width: 940px;
-} */
-
-
-</style>

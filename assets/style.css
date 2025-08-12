@@ -9,13 +9,56 @@
 } */
 
 body {
-    background: url(/img/sky.jpg) top/cover no-repeat;
+    background: url('/_ipx/w_1920&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
 }
 
 header {
-    position: relative;
-    height: 750px;
-    background: url(/img/mountain3.png) 0% 25%/108% no-repeat;
+   position: relative;
+   height: 750px;
+}
+
+header {
+    background: url('/_ipx/w_1920&q_70&f_webp/img/mountain3.png') 0% 25%/108% no-repeat;
+}
+@media screen and (max-width:1366px) {
+    body {
+        background: url('/_ipx/w_1920&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
+    }
+    header {
+        background: url('/_ipx/w_1366&q_70&f_webp/img/mountain3.png') 0% 25%/108% no-repeat;
+    }
+}
+@media screen and (max-width:1047px) {
+    body {
+        background: url('/_ipx/w_1366&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
+    }
+    header {
+        background: url('/_ipx/w_1366&q_70&f_webp/img/mountain3.png') 0% 0%/108% no-repeat;
+    }
+}
+@media screen and (max-width:960px) {
+    body {
+        background: url('/_ipx/w_960&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
+    }
+    header {
+        background: url('/_ipx/w_960&q_70&f_webp/img/mountain3.png') 0% 0%/108% no-repeat;
+    }
+}
+@media screen and (max-width:780px) {
+    body {
+        background: url('/_ipx/w_780&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
+    }
+    header {
+        background: url('/_ipx/w_780&q_70&f_webp/img/mountain3.png') 0% 0%/108% no-repeat;
+    }
+}
+@media screen and (max-width:500px) {
+    body {
+        background: url('/_ipx/w_500&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
+    }
+    header {
+        background: url('/_ipx/w_500&q_70&f_webp/img/mountain3.png') 0% 0%/108% no-repeat;
+    }
 }
 
 header h1 {
@@ -535,7 +578,6 @@ a.lk_link_button {
 
     header {
         height: 650px;
-        background: url(/img/mountain3.png) 0% 0%/108% no-repeat;
     }
 
     .content {

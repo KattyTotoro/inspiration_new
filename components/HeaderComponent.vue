@@ -1,9 +1,9 @@
 <template>
 
-<header :style="route.path=='/'?'':'height:300px'">
+<header :style="route.path=='/'?'':'height:300px;'">
 
 <div style="position: relative;">
-<h1 class="h1Fly">Вдохновение</h1>
+<h1 class="h1Fly">Вдохновение </h1>
 </div>
 
 <!-- Кнопка входа в личный кабинет -->
@@ -58,5 +58,4 @@ const handleLogout = async () => {
   userStore.logOut(); // Вызов метода выхода из хранилища
   posts.value = []; // Очистка списка публикаций
 };
-
 </script>
