@@ -23,13 +23,14 @@ export default defineNuxtConfig({
           {
             type:'text/javascript',
             innerHTML:`
-      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),k.async=1,k.src=r,e.head.appendChild(k)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-      window.ym(103808775, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-        webvisor:true
-      });
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),k.async=1,k.src=r,e.head.appendChild(k)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+window.ym(103808775, "init", {
+  clickmap:true,
+  trackLinks:true,
+  accurateTrackBounce:true,
+  webvisor:true
+});
+(function(){var script = document.createElement("script");script.type = "text/javascript"; script.async = true;script.src = "https://www.googletagmanager.com/gtag/js?id=G-QM703ZH1FF";document.head.appendChild(script);})();window.dataLayer = window.dataLayer || [];function gtag() { window.dataLayer.push(arguments); }gtag("js", new Date());gtag("config", "G-QM703ZH1FF");
           `}
         ],
       },
