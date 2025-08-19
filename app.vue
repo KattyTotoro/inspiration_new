@@ -3,7 +3,9 @@
   <NuxtPage />
   <FooterComponent/>
   <noscript>
-    <div><img src="https://mc.yandex.ru/watch/103808775" style="position:absolute; left:-9999px;" alt="" /></div>
+    <div>
+      <img src="https://mc.yandex.ru/watch/103808775" style="position:absolute; left:-9999px;" alt="" />
+    </div>
   </noscript>
 </template>
 
