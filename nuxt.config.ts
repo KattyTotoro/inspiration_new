@@ -23,14 +23,53 @@ export default defineNuxtConfig({
           {
             type:'text/javascript',
             innerHTML:`
-(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),k.async=1,k.src=r,e.head.appendChild(k)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-window.ym(103808775, "init", {
-  clickmap:true,
-  trackLinks:true,
-  accurateTrackBounce:true,
-  webvisor:true
-});
-(function(){var script = document.createElement("script");script.type = "text/javascript"; script.async = true;script.src = "https://www.googletagmanager.com/gtag/js?id=G-QM703ZH1FF";document.head.appendChild(script);})();window.dataLayer = window.dataLayer || [];function gtag() { window.dataLayer.push(arguments); }gtag("js", new Date());gtag("config", "G-QM703ZH1FF");
+(function () {
+  'use strict'
+
+  var loadedMetrica = false;
+  var timerId;
+
+  if (navigator.userAgent.indexOf( 'YandexMetrika' ) > -1 || location.search.includes('_ym_status-check')) {
+    loadMetrica();
+  } else {
+    window.addEventListener( 'scroll', loadMetrica, {passive: true} );
+    window.addEventListener( 'touchstart', loadMetrica );
+    document.addEventListener( 'mouseenter', loadMetrica );
+    document.addEventListener( 'click', loadMetrica );
+    document.addEventListener( 'DOMContentLoaded', loadFallback );
+  }
+
+  function loadFallback() {
+    timerId = setTimeout( ()=>{
+    loadMetrica
+    // console.error('timer');
+    }, 5000 );
+  }
+
+  function loadMetrica( e ) {
+
+    if ( loadedMetrica ) return;
+    if (e?.type=='mouseenter' && e?.x==0 && e?.y==0) return
+    // console.error(e?.type, e?.x, e?.y);
+
+    loadedMetrica = true;
+    clearTimeout( timerId );
+    window.removeEventListener( 'scroll', loadMetrica );
+    window.removeEventListener( 'touchstart', loadMetrica );
+    document.removeEventListener( 'mouseenter', loadMetrica );
+    document.removeEventListener( 'click', loadMetrica );
+    document.removeEventListener( 'DOMContentLoaded', loadFallback );
+            
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),k.async=1,k.src=r,e.head.appendChild(k)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    window.ym(103808775, "init", {
+      clickmap:true,
+      trackLinks:true,
+      accurateTrackBounce:true,
+      webvisor:true
+    });
+    (function(){var script = document.createElement("script");script.type = "text/javascript"; script.async = true;script.src = "https://www.googletagmanager.com/gtag/js?id=G-QM703ZH1FF";document.head.appendChild(script);})();window.dataLayer = window.dataLayer || [];function gtag() { window.dataLayer.push(arguments); }gtag("js", new Date());gtag("config", "G-QM703ZH1FF");
+  }
+})()
           `}
         ],
       },
