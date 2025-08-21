@@ -6,9 +6,9 @@ export default defineEventHandler(async (event) => {
     if (queryParams.i) {
         i = +queryParams.i
     }
-    const id = event.context.params?.id
-    if (id) {
-        try {
+    const text = event.context.params?.text
+    try {
+        if (text) {
             const posts = await prisma.post.findMany({
                 include: {
                     author: {
@@ -21,20 +21,32 @@ export default defineEventHandler(async (event) => {
                     rubric: true,
                 },
                 where: {
-                    author_id: +id,
+                    approved:true,
+                    OR:[
+                        {text: {
+                            contains: decodeURI(text),
+                            // @ts-ignore
+                            mode: 'insensitive',
+                        }},
+                        {title: {
+                            contains: decodeURI(text),
+                            // @ts-ignore
+                            mode: 'insensitive',
+                        }}, 
+                    ]
                 },
                 orderBy: {
-                created_at: 'desc'
+                    created_at: 'desc'
                 },
                 skip: 20*i,
                 take: 20
             })
             return {posts, ok: true}
-        } catch(e) {
-            console.log(e)
-            return {posts:[], ok: false, e}
+        } else {
+            return {posts:[], ok: false}
         }
-    } else {
-        return {posts:null, ok: false}
+    } catch(e) {
+        console.log(e)
+        return {posts:[], ok: false, e}
     }
 })

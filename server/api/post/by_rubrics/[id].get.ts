@@ -1,6 +1,11 @@
 import prisma from "~/lib/prisma"
 
 export default defineEventHandler(async (event) => {
+    const queryParams = getQuery(event)
+    let i = 0 
+    if (queryParams.i) {
+        i = +queryParams.i
+    }
     const rubric_id = event.context.params?.id
     const where = {
         approved: true,
@@ -23,7 +28,9 @@ export default defineEventHandler(async (event) => {
             where,
             orderBy: {
                 created_at: 'desc'
-            }
+            },
+            skip: 20*i,
+            take:20
         })
         return {posts, ok: true}
     } catch(e) {

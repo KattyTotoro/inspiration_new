@@ -17,6 +17,7 @@
       </div>
     </div>
   </div>
+  <div v-intersection-observer="onIntersectionObserver"></div>
 
 </div>
 
@@ -26,6 +27,7 @@
 
 <script setup lang="ts">
 // import { usePosts } from '~/stores/posts';
+import { vIntersectionObserver } from '@vueuse/components'
 useSeoMeta({
   title: 'Сайт Вдохновение. Путеводитель в мире знаний.',
   ogTitle: 'Сайт Вдохновение. Путеводитель в мире знаний.',
@@ -34,10 +36,24 @@ useSeoMeta({
   ogImage: '/img/summary_small_image.png',
   twitterCard: 'summary_large_image',
 })
-
-const {data} = await useFetch('/api/post')
+const {data} = await useFetch<{posts:any[]}>('/api/post')
 const posts = ref(data.value?.posts)
 
+let i = 1
+let isDone = false
+let isInit = true
+const onIntersectionObserver = async()=>{
+  if (!isDone && !isInit) {
+    const data = await $fetch<{posts:any[]}>('/api/post?i='+i)
+    if (data.posts?.length) {
+      posts.value?.push(...data?.posts)
+      i++
+    } else {
+      isDone = true      
+    }
+  }
+  isInit = false
+}
 </script>
 
 

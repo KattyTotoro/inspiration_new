@@ -1,6 +1,11 @@
 import prisma from "~/lib/prisma"
 
 export default defineEventHandler(async (event) => {
+    const queryParams = getQuery(event)
+    let i = 0 
+    if (queryParams.i) {
+        i = +queryParams.i
+    }
     const id = event.context.params?.id
     if (id) {
         try {
@@ -18,7 +23,9 @@ export default defineEventHandler(async (event) => {
                 where: {
                     author_id: +id,
                     approved: true,
-                }
+                },
+                skip:20*i,
+                take:20
             })
             return {posts, ok: true}
         } catch(e) {
