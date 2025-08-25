@@ -243,25 +243,26 @@ a.topMenuButton {
 .blockList h2 {
     font-size: 1.5rem;
     font-weight: 600;
+    margin-bottom: 20px;
 }
 
 .blockList>div {
-    background: rgba(205, 241, 253, 0.729);
+    background: rgba(205, 241, 253, 0.963);
     margin-top: 20px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgb(134, 134, 134);
-    text-align: justify;
+    /* text-align: justify; */
 }
 
 .post {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 30px;
 }
 
 .post img {
-    width: 20%;
+    width: 200px;
     height: auto;
 }
 
@@ -271,7 +272,7 @@ a.topMenuButton {
 
 .post a {
     text-decoration: underline;
-    color: blue;
+    color: rgb(36, 36, 168);
 }
 
 .article,
@@ -280,7 +281,7 @@ a.topMenuButton {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgb(134, 134, 134);
-    text-align: justify;
+    /* text-align: justify; */
 }
 
 .article img,
@@ -310,9 +311,6 @@ footer {
     border-radius: 0 0 0 15px;
 }
 
-.currentLink {
-    background-color: #ffffff;
-}
 
 
 
@@ -503,6 +501,10 @@ a.lk_link_button {
     transform: translateY(-100px);
 }
 
+.currentLink {
+    background-color: #ffffff;
+}
+
 
 @media screen and (max-width:1330px) {
 
@@ -687,6 +689,14 @@ a.lk_link_button {
     .logout_button {
         width: 110px;
         top: 90px;
+    }
+
+    .post {
+        flex-direction: column;
+    }
+
+    .post img {
+        width: 100%;
     }
 
 }

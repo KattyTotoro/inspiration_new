@@ -20,7 +20,7 @@
     <NuxtLink class="topMenuButton" :class="route.path=='/videos'?'currentLink':''" to="/videos">Видео</NuxtLink>
     <NuxtLink class="topMenuButton" :class="route.path=='/music'?'currentLink':''" to="/music">Музыка</NuxtLink>
     <NuxtLink class="topMenuButton" :class="route.path=='/recipes'?'currentLink':''" to="/recipes">Рецепты</NuxtLink>
-    <NuxtLink class="topMenuButton" :class="route.path=='/trips'?'currentLink':''" to="/travels">Путешествия</NuxtLink>
+    <NuxtLink class="topMenuButton" :class="route.path=='/travels'?'currentLink':''" to="/travels">Путешествия</NuxtLink>
     <NuxtLink class="topMenuButton" :class="route.path=='/podcast'?'currentLink':''" to="/podcast">Подкаст</NuxtLink>
     <NuxtLink class="topMenuButton" :class="route.path=='/posts'?'currentLink':''" to="/posts">Публикации</NuxtLink>
 
@@ -37,7 +37,7 @@
         <li><NuxtLink :class="route.path=='/videos'?'currentLink':''" href="/videos">Видео</NuxtLink></li>
         <li><NuxtLink :class="route.path=='/music'?'currentLink':''" href="/music">Музыка</NuxtLink></li>
         <li><NuxtLink :class="route.path=='/recipes'?'currentLink':''" href="/recipes">Рецепты</NuxtLink></li>
-        <li><NuxtLink :class="route.path=='/trips'?'currentLink':''" href="/travels">Путешествия</NuxtLink></li>
+        <li><NuxtLink :class="route.path=='/travels'?'currentLink':''" href="/travels">Путешествия</NuxtLink></li>
         <li><NuxtLink :class="route.path=='/podcast'?'currentLink':''" href="/podcast">Подкаст</NuxtLink></li>
         <li><NuxtLink :class="route.path=='/'?'currentLink':''" href="/about">О нас</NuxtLink></li>
     </ul>
