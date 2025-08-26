@@ -5,6 +5,10 @@ import path from 'path'
 export default defineEventHandler(async (event) => {
     const data = await readBody(event)
 
+    if (event.context?.user?.id != data?.author_id) {
+        return { ok: false }; // Неавторизован
+    }
+
     if (!data.img) {
         const width = 600
         const height = 450

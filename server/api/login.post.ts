@@ -16,7 +16,15 @@ export default defineEventHandler(async (event) => {
           pass: data.pass
         }
       })
-      return user
+      if (user && user.token) {
+        setCookie(event, 'session', user?.token, {
+          httpOnly: true, // Makes the cookie inaccessible to client-side JavaScript
+          secure: import.meta.dev ? false : true,   // Ensures the cookie is only sent over HTTPS
+          maxAge: 60 * 60 * 24 * 7 // Sets the cookie to expire in 1 week (in seconds)
+        })
+        return user
+      }
+      return null
     } else {
       return {
         error: 'not found'

@@ -4,6 +4,9 @@ export default defineEventHandler(async (event) => {
   const id = event.context.params?.id
   const json = await readBody(event)
   const data = JSON.parse(json)
+
+  if (!event.context?.user) return {ok:false}
+
   if (id) {
     try {
       const comment = await prisma.comment.create({

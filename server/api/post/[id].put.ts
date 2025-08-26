@@ -12,6 +12,10 @@ export default defineEventHandler(async (event) => {
     delete data.created_at
     delete data.updated_at
 
+    if (event.context?.user?.id != data?.author_id) {
+        return { ok: false }; // Неавторизован
+    }
+
     if (!data.img) {
         const width = 600
         const height = 450
