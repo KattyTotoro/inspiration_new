@@ -3,6 +3,11 @@
 <!-- <h1>Сайт Вдохновение. Транслирование знаний. <br>
 <strong>Путеводители среди знаний.</strong></h1> -->
 
+<div class="search">
+  <input type="text"> 
+  <img src="/954591.png" width="30px" alt="">
+</div>
+
 <h1>Все публикации</h1>
 
 <div>

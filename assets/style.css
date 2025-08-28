@@ -505,6 +505,11 @@ a.lk_link_button {
     background-color: #ffffff;
 }
 
+.search {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
 
 @media screen and (max-width:1330px) {
 
