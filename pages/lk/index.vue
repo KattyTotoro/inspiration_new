@@ -67,6 +67,7 @@
 <script setup lang="ts">
 import type { Post } from '@prisma/client';
 import { ref } from 'vue';
+import md5 from 'md5'
 
 const isAuth = ref(true)
 const email = ref('');
@@ -81,7 +82,7 @@ const registerError = ref('');
 
 // Функция для входа
 const handleLogin = async () => {
-  await userStore.logIn(email.value, password.value)
+  await userStore.logIn(email.value, md5(password.value))
   if (userStore.user) {
     fetchPosts()
   }
@@ -102,7 +103,7 @@ const handleRegister = async () => {
     registerError.value = '';
     await userStore.regIn(
       email.value,
-      password.value
+      md5(password.value)
     );
     // Очистка формы после успешной регистрации
     email.value = '';

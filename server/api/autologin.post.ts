@@ -21,7 +21,8 @@ export default defineEventHandler(async (event) => {
         setCookie(event, 'session', user?.token, {
           httpOnly: true, // Makes the cookie inaccessible to client-side JavaScript
           secure: import.meta.dev ? false : true,   // Ensures the cookie is only sent over HTTPS
-          maxAge: 60 * 60 * 24 * 7 // Sets the cookie to expire in 1 week (in seconds)
+          maxAge: 60 * 60 * 24 * 7, // Sets the cookie to expire in 1 week (in seconds)
+          sameSite: true
         })
         return {ok:true, user, massage:''}
       }

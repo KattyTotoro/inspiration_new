@@ -17,7 +17,11 @@ interface regData {
 
 export const useUser = defineStore('user', () => {
   const user = ref(undefined as undefined | User)
-  const logOut = () => {
+  const logOut = async() => {
+    await $fetch('/api/logout', {
+      method: 'POST',
+      body: { token: user.value?.token }
+    })
     user.value = undefined // Сбрасываем состояние пользователя
     delete localStorage.user // Удаляем пользователя из localStorage
     // navigateTo('/lk') // Перенаправляем на страницу входа
