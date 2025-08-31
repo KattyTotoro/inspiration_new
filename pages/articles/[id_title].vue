@@ -41,6 +41,13 @@ const route = useRoute()
 const id = route.params.id_title.toString().split('_',1)[0]
 const {data} = await useFetch(`/api/post/${id}`)
 // @ts-ignore
+if (!data.value?.post) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Page Not Found'
+  })
+}
+// @ts-ignore
 const post = ref(data.value?.post)
 const posts = ref(data.value?.posts)
 </script>

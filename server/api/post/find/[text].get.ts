@@ -6,6 +6,10 @@ export default defineEventHandler(async (event) => {
     if (queryParams.i) {
         i = +queryParams.i
     }
+    const by_rubric = {} as any
+    if (queryParams.rubric) {
+        by_rubric.rubric_id = +queryParams.rubric
+    }
     const text = event.context.params?.text
     try {
         if (text) {
@@ -33,7 +37,8 @@ export default defineEventHandler(async (event) => {
                             // @ts-ignore
                             mode: 'insensitive',
                         }}, 
-                    ]
+                    ],
+                    ...by_rubric,
                 },
                 orderBy: {
                     created_at: 'desc'

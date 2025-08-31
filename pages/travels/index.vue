@@ -34,6 +34,8 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
+// useRouter.navigate(`/search/${search.value}?rubric=5`)
+
 const { data } = await useFetch('/api/post/by_rubrics/5')
 const posts = ref(data.value?.posts)
 </script>
