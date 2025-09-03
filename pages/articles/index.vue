@@ -4,9 +4,9 @@
       <strong>Путеводители среди знаний</strong></h1>
 
 <div>
-
   <p v-if="!posts?.length">Публикаций пока нет</p>
 
+  <!-- Блок со списком публикаций -->
   <div v-else class="blockList">
     <div class="post" v-for="post, index of posts" :key="post.id">
       <NuxtImg v-if="[0,1].includes(index)" :src="`${post.img}`" sizes="200px sm:100%" preload />

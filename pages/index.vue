@@ -18,22 +18,8 @@
 
         <div class="blockList">
         <h2>Все публикации:</h2>
-            <div>
-                <h2>Статья 5</h2>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam adipisci veniam error fugit nemo,
-                reprehenderit consequatur eligendi molestiae beatae similique amet officia quidem recusandae,
-                quaerat sunt nam non dolores blanditiis.
-                <br>
-                <a href="#">Подробнее Статья 5</a>
-            </div>
-            <div>
-                <h2>Путешествие 1</h2>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam adipisci veniam error fugit nemo,
-                reprehenderit consequatur eligendi molestiae beatae similique amet officia quidem recusandae,
-                quaerat sunt nam non dolores blanditiis.
-                <br>
-                <a href="#">Подробнее Путешествие 1</a>
-            </div>
+
+
 
         </div>
 

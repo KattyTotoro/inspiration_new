@@ -1,18 +1,21 @@
 <template>
   <section class="content">
     <template v-if="userStore.user?.role=='moderator'">
-      <div class="blockList">
-        <div class="post" v-for="post of posts" :key="post.id">
-          <NuxtImg :src="`${post.img}`" sizes="300px" loading="lazy" />
-          <div class="postPreview">
+
+    <!-- Блок со списком публикаций -->
+    <div class="blockList">
+      <div class="post" v-for="post, index of posts" :key="post.id">
+        <NuxtImg v-if="[0,1].includes(index)" :src="`${post.img}`" sizes="200px sm:100%" preload />
+        <NuxtImg v-else :src="`${post.img}`" sizes="200px sm:100%" loading="lazy"/>
+        <div class="postPreview">
             <h2>
               <NuxtLink :to="`/lk/moderation/preview/${post.id}`">{{ post.title }}</NuxtLink>
             </h2>
             <p>{{ post.preview }}</p>
-          </div>
         </div>
       </div>
-    </template>
+    </div>
+</template>
     
   </section>
 </template>

@@ -42,16 +42,22 @@
       </div>
     </div>
 
-    <!-- Блок с публикациями -->
+    
     <div v-if="userStore.user">
       <NuxtLink v-if="userStore.user?.role=='moderator'" to="/lk/moderation" class="post_create_button">Модерация</NuxtLink>
       
       <h2 class="myPublications">Мои публикации</h2>
+
       <p v-if="!posts?.length">Публикаций пока нет</p>
+
+      <!-- Ссылка для добавления публикации -->
       <NuxtLink to="/lk/post_create" class="post_create_button">Добавить публикацию</NuxtLink>
+
+      <!-- Блок со списком публикаций -->
       <div class="blockList">
-        <div class="post" v-for="post of posts" :key="post.id">
-          <NuxtImg :src="`${post.img}`" sizes="300px" loading="lazy" />
+        <div class="post" v-for="post, index of posts" :key="post.id">
+          <NuxtImg v-if="[0,1].includes(index)" :src="`${post.img}`" sizes="200px sm:100%" preload />
+          <NuxtImg v-else :src="`${post.img}`" sizes="200px sm:100%" loading="lazy"/>
           <div class="postPreview">
             <h2>
               <NuxtLink :to="`/lk/post_edit/${post.id}`">{{ post.title }}</NuxtLink>
