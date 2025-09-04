@@ -6,19 +6,8 @@
       <p v-if="!posts?.length">Публикаций пока нет</p>
       
       <!-- Блок со списком публикаций -->
-      <div v-else class="blockList">
-        <div class="post" v-for="post, index of posts" :key="post.id">
-              <NuxtImg v-if="[0,1].includes(index)" :src="`${post.img}`" sizes="200px sm:100%" preload />
-              <NuxtImg v-else :src="`${post.img}`" sizes="200px sm:100%" loading="lazy"/>
-              <div class="postPreview">
-                <h2>
-                <NuxtLink :to="`/${post.rubric.title_en.toLowerCase()}/${post.id}_${post.title_en}`">{{ post.title }}</NuxtLink>
-                </h2>
-                <p>{{ post.preview }}</p>
-              </div>
-          </div>
-      </div>
-
+      <PostsComponent v-else :posts="posts"/>
+      <AsyncLoader path="by_rubrics/4" @posts="addPosts"/>
   </section>
 
 
@@ -36,6 +25,9 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
-const { data } = await useFetch('/api/post/by_rubrics/4')
+const { data } = await useFetch<{posts:any[]}>('/api/post/by_rubrics/4')
 const posts = ref(data.value?.posts)
+const addPosts = (data:any[])=>{
+  posts.value?.push(...data)
+}
 </script>

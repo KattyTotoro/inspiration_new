@@ -24,8 +24,8 @@ export default defineEventHandler(async (event) => {
             orderBy: {
                 created_at: 'desc'
             },
-            skip: 20*i,
-            take: 20
+            skip: 3*i,
+            take: 3
         })
         return {posts, ok: true}
     } catch(e) {
