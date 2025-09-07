@@ -36,7 +36,7 @@ const post = ref(data.value?.post)
 const save = async (data: { html: string }) => {
   if (post.value) {
     post.value.title_en = translit(post.value.title)
-    post.value.text = data.html.replaceAll('<br>', '').replaceAll('<p></p>', '<br>') || ''
+    post.value.text = data.html.replaceAll('<p></p>', '<br>') || ''
     const firstImgStartIndex = post.value.text.indexOf('<img src="')
     if (firstImgStartIndex != -1) {
       const firstImgEndIndex = post.value.text.indexOf('"', firstImgStartIndex + 10)
@@ -45,8 +45,9 @@ const save = async (data: { html: string }) => {
     const firstPStartIndex = post.value.text.indexOf('<p>')
     if (firstPStartIndex != -1) {
       const firstPEndIndex = post.value.text.indexOf('</p>', firstPStartIndex + 3)
-      post.value.preview = post.value.text.slice(firstPStartIndex + 3, firstPEndIndex).replace(/<[^>]*>/g, '')
+      post.value.preview = post.value.text.slice(firstPStartIndex + 3, firstPEndIndex).replace(/<[^>]*>/g, '').replace(/&nbsp;/g,'')
     }
+    post.value.preview = post.value.preview.length > 150 ? post.value.preview.slice(0, 147) + '...' : post.value.preview
     post.value.text = data.html.replaceAll('<p></p>', '<br>') || ''
     const req = await fetch(`/api/post/${id}`, {
       method: 'PUT',

@@ -34,6 +34,12 @@
     width: 200px;
 }
 
+.tiptap img[src*="img-apple"] {
+    width: 19.2px;
+    margin: unset;
+    float: unset;
+}
+
 .tiptapImg {
     margin-top: 200px;
     padding: 20px;

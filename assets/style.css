@@ -295,6 +295,12 @@ a.topMenuButton {
     width: 400px;
 }
 
+.postPage img[src*="img-apple"] {
+    width: 19.2px;
+    margin: unset;
+    float: unset;
+}
+
 .article p,
 .recipe p,
 .postPage p {
