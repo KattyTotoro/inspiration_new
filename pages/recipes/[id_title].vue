@@ -38,9 +38,55 @@
 </template>
 
 <script setup lang="ts">
+import {setGallery} from '~~/lib/setGalery'
 const route = useRoute()
 const id = route.params.id_title.toString().split('_',1)[0]
 const {data} = await useFetch(`/api/post/${id}`)
+
+onMounted(()=>{
+  const imagesEls = document.querySelectorAll('.postPage img') as NodeListOf<HTMLImageElement>
+
+  const images = [] as any
+
+  let i = 0
+  for (let el of imagesEls) {
+    images.push({
+      src: el.src,
+      alt: el.alt,
+      w: el.naturalWidth,
+      h: el.naturalHeight,
+    },)
+    el.addEventListener('click',()=>lightbox.loadAndOpen(i))
+    i++
+  }
+
+const lightbox = setGallery(
+  {
+    dataSource: images,
+  },
+  {
+    immediate: false,
+    beforeInit(lightbox) {
+      // @ts-ignore
+      lightbox.addFilter('thumbEl', (thumbEl, data, index) => {
+        const el = document.querySelectorAll('.postPage img')[index];
+        if (el) {
+          return el;
+        }
+        return thumbEl;
+      });
+    },
+  }
+);
+
+// const handleOpen = (index:number) => {
+//   lightbox.loadAndOpen(index)
+// };
+
+})
+
+
+
 // @ts-ignore
 const post = ref(data.value?.post)
 const posts = ref(data.value?.posts)

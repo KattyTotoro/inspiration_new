@@ -37,10 +37,9 @@ const useFiles = async (event: any) => {
         .on('close', async () => {
           // merge data chunks with buffer and attach them to body
           fileAsBuffer = Buffer.concat(data)
-          
           await sharp(fileAsBuffer)
           .webp({ quality: 80 })
-          .toFile(saveTo)
+          .toFile(saveTo)    
         })
         .on('end', () => {
           files.push({

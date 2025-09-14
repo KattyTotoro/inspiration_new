@@ -166,15 +166,28 @@ const upload = async () => {
   if (fileref.files) {
     fD.append('alt', alt.value)
     fD.append('img', fileref.files[0])
-    const data = await $fetch<{ url: string }>('/api/img', {
-      method: 'POST',
-      body: fD
-    })
-    alt.value = ''
-    fileref.value = ''
-    setTimeout(() => {
-      editor.value?.chain().focus().setImage({ src: data.url, alt: alt.value }).run()
-    }, 500)
+    const file = fileref.files[0]
+    if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const img = document.createElement("img");
+            img.onload = async () => {
+                fD.append('width', img.naturalWidth.toString())
+                fD.append('height', img.naturalHeight.toString())
+                const data = await $fetch<{ url: string }>('/api/img', {
+                  method: 'POST',
+                  body: fD
+                })
+                alt.value = ''
+                fileref.value = ''
+                setTimeout(() => {
+                  editor.value?.chain().focus().setImage({ src: data.url, alt: alt.value }).run()
+                }, 500)
+            };
+            img.src = e.target?.result as string
+        };
+        reader.readAsDataURL(file);
+    }
   }
 }
 

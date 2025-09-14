@@ -29,6 +29,7 @@
     "npm": "^11.1.0",
     "nuxt": "^3.13.0",
     "nuxt-tiptap-editor": "^2.1.4",
+    "photoswipe": "^5.4.4",
     "pinia": "^2.3.0",
     "sharp": "^0.33.5",
     "vue": "latest",

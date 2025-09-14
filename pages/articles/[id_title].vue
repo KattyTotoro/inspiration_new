@@ -9,7 +9,7 @@
     <h1>{{ post?.title }}</h1>
     <br>
     <!-- <NuxtImg :src="`${post?.img}`" sizes="300px"/> -->
-        
+ 
     <div v-html="post?.text"></div>
     <div style="clear: both;"></div>
     <p class="authorPost">Автор поста: {{ post.author.name? post.author.name : 'Автор не известен' }}</p>
@@ -50,6 +50,8 @@ if (!data.value?.post) {
 // @ts-ignore
 const post = ref(data.value?.post)
 const posts = ref(data.value?.posts)
+
+
 </script>
 
 <style scoped>

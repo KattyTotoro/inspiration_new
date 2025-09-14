@@ -32,7 +32,7 @@ const save = async (data: { html: string }) => {
   if (post.value && userStore.user?.id) {
     post.value.title_en = translit(post.value.title)
     // post.value.text = data.html.replaceAll('<br>', '').replaceAll('<p></p>', '<br>') || ''
-    post.value.text = data.html.replaceAll('<p></p>', '<br>') || ''
+    post.value.text = data.html.replaceAll('<br>', '').replaceAll('<p></p>', '<br>') || ''
     const firstImgStartIndex = post.value.text.indexOf('<img src="')
     if (firstImgStartIndex != -1) {
       const firstImgEndIndex = post.value.text.indexOf('"', firstImgStartIndex + 10)
