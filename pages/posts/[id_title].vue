@@ -46,7 +46,8 @@ const {data} = await useFetch(`/api/post/${id}`)
 // @ts-ignore
 const post = ref(data.value?.post)
 const posts = ref(data.value?.posts)
-
+photoSwipe()
+postMeta(post)
 </script>
 
 <style scoped>

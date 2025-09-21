@@ -38,116 +38,16 @@
 </template>
 
 <script setup lang="ts">
-import {setGallery} from '~~/lib/setGalery'
 const route = useRoute()
 const id = route.params.id_title.toString().split('_',1)[0]
 const {data} = await useFetch(`/api/post/${id}`)
-
-onMounted(()=>{
-  const imagesEls = document.querySelectorAll('.postPage img') as NodeListOf<HTMLImageElement>
-
-  const images = [] as any
-
-  let i = 0
-  for (let el of imagesEls) {
-    images.push({
-      src: el.src,
-      alt: el.alt,
-      w: el.naturalWidth,
-      h: el.naturalHeight,
-    },)
-    el.addEventListener('click',()=>lightbox.loadAndOpen(i))
-    i++
-  }
-
-const lightbox = setGallery(
-  {
-    dataSource: images,
-  },
-  {
-    immediate: false,
-    beforeInit(lightbox) {
-      // @ts-ignore
-      lightbox.addFilter('thumbEl', (thumbEl, data, index) => {
-        const el = document.querySelectorAll('.postPage img')[index];
-        if (el) {
-          return el;
-        }
-        return thumbEl;
-      });
-    },
-  }
-);
-
-// const handleOpen = (index:number) => {
-//   lightbox.loadAndOpen(index)
-// };
-
-})
-
-
-
 // @ts-ignore
 const post = ref(data.value?.post)
+// @ts-ignore
 const posts = ref(data.value?.posts)
-useSeoMeta({
-  title: post.value.title,
-  ogTitle: post.value.title,
-  description: post.value.preview,
-  ogDescription: post.value.preview,
-  // !!! Указать имя домена
-  ogImage: 'https://domain.ru/'+post.value.img,
-  twitterCard: 'summary_large_image',
-})
-const micro = [
-  {
-    "@context":"https://schema.org/",
-    "@type":"ImageObject",
-    "contentUrl": 'https://domain.ru'+post.value.img,
-    "license":"https://creativecommons.org/licenses/by/4.0/",
-    "copyrightNotice":"© 2025 Inspiration. Использование разрешено с указанием авторства.",
-    "creditText":`Фото: ${post.value.author.pseudo ? post.value.author.pseudo : post.value.author.email } / domain.ru`,
-    "acquireLicensePage":"https://domain.ru/terms_of_use",
-    "datePublished":post.value.created_at,
-    "description": post.value.title,
-    "creator":{
-      "@type":"Person",
-      "name": `${post.value.author.pseudo ? post.value.author.pseudo : post.value.author.email }`
-    }
-  },
-  {
-    "@context":"http://schema.org",
-    "@type":"Article",
-    "mainEntityOfPage": {
-      "@type":"WebPage",
-      "@id":`https://domain.ru/${post.value.rubric.title_en.toLowerCase()}/${post.value.id}_${post.value.title_en}`,
-    },
-    "headline":post.value.title,
-    "datePublished":post.value.created_at,
-    "dateModified":post.value.updated_at,
-    "author": {
-      "@type":"Person",
-      "name": `${post.value.author.pseudo ? post.value.author.pseudo : post.value.author.email }`
-    },
-    "publisher":{
-      "@type":"Organization",
-      "name":"Inspiration",
-      "logo": {
-        "@type":"ImageObject",
-        "url":"https://domain.ru/favicon.ico"
-      }
-    },
-    "description":post.value.preview,
-    "url":`https://domain.ru/${post.value.rubric.title_en.toLowerCase()}/${post.value.id}_${post.value.title_en}`,
-    "image":[
-      'https://domain.ru'+post.value.img,
-    ]
-  }
-]
-useHead({
-  script: [ { type:'application/ld+json', innerHTML: micro} ]
-})
 
+photoSwipe()
+postMeta(post)
 </script>
 
 <style scoped>

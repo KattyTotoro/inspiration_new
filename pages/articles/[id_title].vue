@@ -50,7 +50,8 @@ if (!data.value?.post) {
 // @ts-ignore
 const post = ref(data.value?.post)
 const posts = ref(data.value?.posts)
-
+photoSwipe()
+postMeta(post)
 
 </script>
 
