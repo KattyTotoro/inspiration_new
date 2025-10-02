@@ -29,7 +29,9 @@ const userStore = useUser()
 const id = +route.params.id
 const {data} = await useFetch(`/api/post/${id}`)
 const post = ref(data.value?.post)
-
+definePageMeta({
+  middleware: 'lk'
+})
 photoSwipe()
 async function approve() {
     const resp = await fetch('/api/post/moderate/'+post.value?.id, {

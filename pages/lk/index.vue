@@ -11,13 +11,15 @@
     </div>
 
     <div class="tabs" v-if="!userStore.user">
-      <input type="radio" id="tab-login" name="tab-group" checked @click="isAuth=true">
+      <input type="radio" id="tab-login" name="tab-group" checked @click="variant='login'">
       <label for="tab-login" style="width:81px" class="tab-title">Вход</label>
-      <input type="radio" id="tab-register" name="tab-group" @click="isAuth=false">
+      <input type="radio" id="tab-register" name="tab-group" @click="variant='reg'">
       <label for="tab-register" style="width:140px" class="tab-title">Регистрация</label>
+      <input type="radio" id="tab-recovery" name="tab-group" @click="variant='recovery'">
+      <label for="tab-recovery" style="width:140px" class="tab-title">Восстановление</label>
       <br>
         <!-- Вкладка Входа -->
-      <div class="tab" v-if="isAuth">
+      <div class="tab" v-if="variant=='login'">
         <div class="tab-content">
           <form class="lk_entrance" @submit.prevent="handleLogin">
             <input type="email" v-model="email" placeholder="Введите почту" required>
@@ -29,13 +31,22 @@
       </div>
 
         <!-- Вкладка регистрации -->
-        <div class="tab" v-else>
+        <div class="tab" v-else-if="variant=='reg'">
         <div class="tab-content">
           <form class="lk_entrance" @submit.prevent="handleRegister">
             <input type="email" v-model="email" placeholder="Введите почту" required>
             <input type="password" v-model="password" placeholder="Введите пароль" required>
             <input type="password" v-model="password2" placeholder="Повторите пароль" required>
             <button type="submit">Зарегистрироваться</button>
+            <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+          </form>
+        </div>
+      </div>
+      <div class="tab" v-else>
+        <div class="tab-content">
+          <form class="lk_entrance" @submit.prevent="handleRecovery">
+            <input type="email" v-model="email" placeholder="Введите почту" required>
+            <button type="submit">Восстановить пароль</button>
             <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
           </form>
         </div>
@@ -75,7 +86,7 @@ import type { Post } from '@prisma/client';
 import { ref } from 'vue';
 import md5 from 'md5'
 
-const isAuth = ref(true)
+const variant = ref('login')
 const email = ref('');
 const password = ref('');
 const password2 = ref('');
@@ -98,6 +109,28 @@ onMounted(()=>{
   if (!posts.value.length && userStore.user?.id) fetchPosts()
 })
 
+const handleRecovery = async()=>{
+  try {
+    errorMessage.value = '';
+    const data = await $fetch('/api/recovery', {
+      method: "put",
+      body: {email:email.value}
+    })
+    if (data.ok) {
+      errorMessage.value = 'Следуйте указаниям в письме';
+    } else {
+      errorMessage.value = 'Проверьте email';  
+    }
+    // Очистка формы после успешной регистрации
+    email.value = '';
+    password.value = '';
+    password2.value = '';
+    variant.value = 'login'
+  } catch (error) {
+    errorMessage.value = 'Проверьте email';
+  }
+}
+
 // Обработчик регистрации
 const handleRegister = async () => {
   if (password.value !== password2.value) {
@@ -115,7 +148,7 @@ const handleRegister = async () => {
     email.value = '';
     password.value = '';
     password2.value = '';
-    isAuth.value = true
+    variant.value = 'login'
   } catch (error) {
     registerError.value = 'Ошибка регистрации. Возможно, email уже занят';
   }

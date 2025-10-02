@@ -8,7 +8,7 @@
 
 <!-- Кнопка входа в личный кабинет -->
 <NuxtLink class="lk_link_button" :class="route.path=='/lk'?'currentLink':''" to="/lk">Личный кабинет</NuxtLink>
-
+<p v-if="userStore.user?.id && !userStore.user?.active" class="lk_not_active">Подтверидите регистрацию</p>
 <!-- Кнопка выхода из личного кабинета -->
 <button v-if="userStore.user?.id" @click="handleLogout" class="logout_button">Выход</button> 
 

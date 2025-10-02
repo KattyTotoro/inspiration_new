@@ -7,6 +7,7 @@ interface User {
   email: string;
   token: string
   role: string
+  active: boolean
 }
 
 interface regData {

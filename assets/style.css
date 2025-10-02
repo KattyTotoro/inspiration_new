@@ -348,6 +348,12 @@ footer {
     text-shadow: 2px 2px 2px rgba(185, 206, 224, 0.4);
 }
 
+.lk_not_active {
+    position: absolute;
+    top: 125px;
+    right: 10px;
+}
+
 a.lk_link_button {
     text-decoration: none;
     color: rgb(40, 65, 91);

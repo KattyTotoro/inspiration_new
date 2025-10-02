@@ -27,6 +27,10 @@ import { ref } from 'vue';
 const userStore = useUser()
 const posts = ref([] as Post[]); // Список публикаций
 
+definePageMeta({
+  middleware: 'lk'
+})
+
 onMounted(()=>{
   if (!posts.value.length && userStore.user?.role=='moderator') fetchPosts()
 })

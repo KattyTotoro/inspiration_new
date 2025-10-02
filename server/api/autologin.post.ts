@@ -10,6 +10,8 @@ export default defineEventHandler(async (event) => {
           name: true,
           token: true,
           role: true,
+          // @ts-ignore
+          active: true,
         },
         where: {
           email: data.email,

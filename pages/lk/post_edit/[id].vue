@@ -24,7 +24,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { translit } from '~/lib/translit';
-
+definePageMeta({
+  middleware: 'lk'
+})
 const appStore = useApp()
 
 const route = useRoute()

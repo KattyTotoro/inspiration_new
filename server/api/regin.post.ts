@@ -1,5 +1,5 @@
 import prisma from "~/lib/prisma"
-// import { confirm } from "~/lib/nodemailer"
+import { confirm } from "~/lib/nodemailer"
 
 export default defineEventHandler(async (event) => {
     const data = await readBody(event)
@@ -21,10 +21,13 @@ export default defineEventHandler(async (event) => {
           id:true,
           email:true,
           name:true,
-          token:true
+          token:true,
+          // @ts-ignore
+          recovery: true
         }
       })
-    //   await confirm(data.email, '42345234')
+      // @ts-ignore
+      await confirm(data.email, user.recovery)
       return {ok:true, user, massage:''}
     } else {
       return {

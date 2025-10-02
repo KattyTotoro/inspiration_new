@@ -18,6 +18,8 @@ model User {
   pass  String
   pseudo String?
   token  String @unique @default(uuid())
+  recovery String? @default(uuid())
+  active  Boolean? @default(false)
   role  String?
   posts Post[]
   comments Comment[]
