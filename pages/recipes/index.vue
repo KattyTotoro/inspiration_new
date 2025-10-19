@@ -7,7 +7,7 @@
       
       <!-- Блок со списком публикаций -->
       <PostsComponent v-else :posts="posts"/>
-      <AsyncLoader path="by_rubrics/4" @posts="addPosts"/>
+      <AsyncLoader path="/by_rubrics/4" @posts="addPosts"/>
   </section>
 
 

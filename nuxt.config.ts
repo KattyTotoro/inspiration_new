@@ -131,5 +131,5 @@ export default defineNuxtConfig({
     autoSetupPrisma: true
   },
 
-  modules: ['@nuxt/image', '@pinia/nuxt', 'nuxt-tiptap-editor', '@prisma/nuxt']
+  modules: ['@nuxt/image', '@pinia/nuxt', '@prisma/nuxt']
 })

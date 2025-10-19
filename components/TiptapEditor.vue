@@ -141,11 +141,12 @@
 </template>
 
 <script setup lang="ts">
-import { Editor, EditorContent, BubbleMenu, FloatingMenu } from '@tiptap/vue-3'
+import { findParentNode, posToDOMRect } from '@tiptap/core'
+import { Editor, EditorContent } from '@tiptap/vue-3'
 import Highlight from '@tiptap/extension-highlight'
-import Underline from '@tiptap/extension-underline'
 import StarterKit from '@tiptap/starter-kit'
 import Image from '@tiptap/extension-image'
+import { BubbleMenu, FloatingMenu } from '@tiptap/vue-3/menus'
 
 const editor = ref(null as any)
 const emit = defineEmits(['save'])
@@ -226,7 +227,7 @@ function pasteText(e: any) {
 onMounted(() => {
   editor.value = new Editor({
     content: props.text || '',
-    extensions: [StarterKit, Image, Highlight, Underline],
+    extensions: [StarterKit, Image, Highlight],
   })
   el = document.querySelector('.editor_block')
   el.addEventListener('paste', pasteText, true)
