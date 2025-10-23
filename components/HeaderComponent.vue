@@ -3,7 +3,7 @@
 <header :style="route.path=='/'?'':'height:300px;'">
 
 <div style="position: relative;">
-<h1 class="h1Fly">Вдохновение </h1>
+<h1>Вдохновение </h1>
 </div>
 
 <!-- Кнопка входа в личный кабинет -->

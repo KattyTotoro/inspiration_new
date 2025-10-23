@@ -12,11 +12,11 @@
 
     <div class="tabs" v-if="!userStore.user">
       <input type="radio" id="tab-login" name="tab-group" checked @click="variant='login'">
-      <label for="tab-login" style="width:81px" class="tab-title">Вход</label>
+      <label for="tab-login" style="width:150px" class="tab-title">Вход</label>
       <input type="radio" id="tab-register" name="tab-group" @click="variant='reg'">
-      <label for="tab-register" style="width:140px" class="tab-title">Регистрация</label>
+      <label for="tab-register" style="width:150px" class="tab-title">Регистрация</label>
       <input type="radio" id="tab-recovery" name="tab-group" @click="variant='recovery'">
-      <label for="tab-recovery" style="width:140px" class="tab-title">Восстановление</label>
+      <label for="tab-recovery" style="width:255px" class="tab-title">Восстановление пароля</label>
       <br>
         <!-- Вкладка Входа -->
       <div class="tab" v-if="variant=='login'">
@@ -42,6 +42,7 @@
           </form>
         </div>
       </div>
+      <!-- Вкладка восстановления пароля -->
       <div class="tab" v-else>
         <div class="tab-content">
           <form class="lk_entrance" @submit.prevent="handleRecovery">
@@ -177,23 +178,20 @@ watch(()=>userStore.user, (user)=>{
 <style scoped>
 
 .tabs {
-    position: relative; 
-    /* margin: 20px; */
+    margin: 20px auto;
     margin-bottom: 20px;
+    max-width: 600px;
    }
-
-.tab { 
-  display: inline-block; 
-}
 
 .tab-title {
   display: inline-block; 
-  background: #f0f0f0;
-  padding: 10px 20px;
-  border: 1px solid #666; 
+  background: #f0f0f09a;
+  padding: 10px 8px;
+  border: 3px solid #ddd;
   border-bottom: none; 
   border-radius: 4px 4px 0 0;
   margin-right: 5px;
+  text-align: center;
   transition: color 0.3s ease, background 0.3s ease, font-weight 0.3s ease;
 }
 
@@ -211,6 +209,7 @@ input[type="radio"]:checked + .tab-title {
   margin-bottom: -1px;
   color: #007bff;
   font-weight: bold;
+  padding: 10px;
 }
 
 /* .tab:checked + .tab-title {
@@ -225,7 +224,7 @@ input[type="radio"]:checked + .tab-title {
   padding: 20px; 
   width: 100%; 
   box-sizing: border-box; 
-  border: 1px solid #ddd;
+  border: 3px solid #ddd;
   border-radius: 0 4px 4px 4px;
  /* или */
   /* padding: 10px; */
@@ -237,7 +236,7 @@ input[type="radio"]:checked + .tab-title {
 } */
 
 .lk_entrance {
-  max-width: 400px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ddd;
@@ -252,7 +251,8 @@ input[type="radio"]:checked + .tab-title {
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 18px;
+  text-align: center;
 }
 
 .lk_entrance input:focus {
@@ -268,8 +268,10 @@ input[type="radio"]:checked + .tab-title {
   color: #fff;
   border: none;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 22px;
+  font-weight: 600;
   cursor: pointer;
+  text-align: center;
   transition: background-color 0.3s ease;
 }
 
