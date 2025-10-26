@@ -11,13 +11,14 @@
     </div>
 
     <div class="tabs" v-if="!userStore.user">
-      <input type="radio" id="tab-login" name="tab-group" checked @click="variant='login'">
-      <label for="tab-login" style="width:150px" class="tab-title">Вход</label>
-      <input type="radio" id="tab-register" name="tab-group" @click="variant='reg'">
-      <label for="tab-register" style="width:150px" class="tab-title">Регистрация</label>
-      <input type="radio" id="tab-recovery" name="tab-group" @click="variant='recovery'">
-      <label for="tab-recovery" style="width:255px" class="tab-title">Восстановление пароля</label>
-      <br>
+      <div class="tabs_buttons">
+        <input type="radio" id="tab-login" name="tab-group" checked @click="variant='login'">
+        <label for="tab-login" class="tab-title">Вход</label>
+        <input type="radio" id="tab-register" name="tab-group" @click="variant='reg'">
+        <label for="tab-register" class="tab-title">Регистрация</label>
+        <input type="radio" id="tab-recovery" name="tab-group" @click="variant='recovery'">
+        <label for="tab-recovery" class="tab-title rocovery">Восстановление пароля</label>
+      </div>
         <!-- Вкладка Входа -->
       <div class="tab" v-if="variant=='login'">
         <div class="tab-content">
@@ -178,10 +179,19 @@ watch(()=>userStore.user, (user)=>{
 <style scoped>
 
 .tabs {
-    margin: 20px auto;
-    margin-bottom: 20px;
-    max-width: 600px;
-   }
+  margin: 20px auto;
+  margin-bottom: 20px;
+  max-width: 600px;
+  height: 334px;
+}
+
+.tabs_buttons {
+  display: grid;
+  grid-template-columns: 150px 150px 1fr;
+  gap: 5px;
+}
+
+
 
 .tab-title {
   display: inline-block; 
@@ -190,7 +200,6 @@ watch(()=>userStore.user, (user)=>{
   border: 3px solid #ddd;
   border-bottom: none; 
   border-radius: 4px 4px 0 0;
-  margin-right: 5px;
   text-align: center;
   transition: color 0.3s ease, background 0.3s ease, font-weight 0.3s ease;
 }
@@ -292,4 +301,20 @@ input[type="radio"]:checked + .tab-title {
   margin: 50px auto;
   width: 940px;
 }
+
+@media screen and (max-width:600px) {
+  .tabs {
+    height: 378px;
+  }
+  .tabs_buttons {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0px;
+    column-gap: 5px;
+  }
+  .rocovery {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+}
+
 </style>
