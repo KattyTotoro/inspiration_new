@@ -28,6 +28,8 @@
 
 .tiptap p {
     color: green;
+    line-height: normal;
+    margin-top: 20px;
 }
 
 .tiptap img {

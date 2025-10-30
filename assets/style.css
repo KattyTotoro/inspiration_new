@@ -305,6 +305,7 @@ a.topMenuButton {
 .recipe p,
 .postPage p {
     margin-top: 20px;
+    /* word-break: break-all; */
     /* text-indent: 30px; */
 }
 
@@ -685,6 +686,12 @@ a.lk_link_button {
     }
 }
 
+@media screen and (max-width:775px) {
+    .postPage img {
+        width: 100%;
+        margin: 0;
+    }
+}
 @media screen and (max-width:691px) {
 
     header {
@@ -839,7 +846,7 @@ a.lk_link_button {
 @media screen and (max-width:399px) {
 
     header {
-        height: 321px;
+        height: 250px;
     }
 
     a.topMenuButton {

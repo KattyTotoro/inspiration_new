@@ -3,7 +3,8 @@
     <template v-if="editor">
       <div>
         <button @click="editor.chain().focus().toggleBold().run()"
-          :disabled="!editor.can().chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
+          :disabled="!editor.can().chain().focus().toggleBold().run()"
+          :class="{ 'is-active': editor.isActive('bold') }">
           жирный
         </button>
         <button @click="editor.chain().focus().toggleItalic().run()"
@@ -17,7 +18,8 @@
           перечёркнутый
         </button>
         <button @click="editor.chain().focus().toggleCode().run()"
-          :disabled="!editor.can().chain().focus().toggleCode().run()" :class="{ 'is-active': editor.isActive('code') }">
+          :disabled="!editor.can().chain().focus().toggleCode().run()"
+          :class="{ 'is-active': editor.isActive('code') }">
           код
         </button>
         <button @click="editor.chain().focus().unsetAllMarks().run()">
@@ -26,7 +28,8 @@
         <button @click="editor.chain().focus().clearNodes().run()">
           clear nodes
         </button>
-        <button @click="editor.chain().focus().setParagraph().run()" :class="{ 'is-active': editor.isActive('paragraph') }">
+        <button @click="editor.chain().focus().setParagraph().run()"
+          :class="{ 'is-active': editor.isActive('paragraph') }">
           paragraph
         </button>
 
@@ -90,10 +93,12 @@
           <button @click="editor.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
             Bold
           </button>
-          <button @click="editor.chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }">
+          <button @click="editor.chain().focus().toggleItalic().run()"
+            :class="{ 'is-active': editor.isActive('italic') }">
             Italic
           </button>
-          <button @click="editor.chain().focus().toggleStrike().run()" :class="{ 'is-active': editor.isActive('strike') }">
+          <button @click="editor.chain().focus().toggleStrike().run()"
+            :class="{ 'is-active': editor.isActive('strike') }">
             Strike
           </button>
           <button @click="editor.chain().focus().toggleHighlight().run()"
@@ -103,6 +108,10 @@
           <button @click="editor.chain().focus().toggleUnderline().run()"
             :class="{ 'is-active': editor.isActive('underline') }">
             Подчеркнуть
+          </button>
+          <button @click="setLink" :class="{ 'is-active': editor.isActive('link') }">Set link</button>
+          <button @click="editor.chain().focus().unsetLink().run()" :disabled="!editor.isActive('link')">
+            Unset link
           </button>
         </div>
       </bubble-menu>
@@ -146,6 +155,7 @@ import { Editor, EditorContent } from '@tiptap/vue-3'
 import Highlight from '@tiptap/extension-highlight'
 import StarterKit from '@tiptap/starter-kit'
 import Image from '@tiptap/extension-image'
+// import Link from '@tiptap/extension-link'
 import { BubbleMenu, FloatingMenu } from '@tiptap/vue-3/menus'
 
 const editor = ref(null as any)
@@ -155,7 +165,7 @@ const props = defineProps(['text'])
 const alt = ref('')
 const file = ref(null)
 
-let el:any
+let el: any
 
 const save = () => {
   emit('save', { html: editor.value?.getHTML() })
@@ -169,25 +179,25 @@ const upload = async () => {
     fD.append('img', fileref.files[0])
     const file = fileref.files[0]
     if (file && file.type.startsWith('image/')) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            const img = document.createElement("img");
-            img.onload = async () => {
-                fD.append('width', img.naturalWidth.toString())
-                fD.append('height', img.naturalHeight.toString())
-                const data = await $fetch<{ url: string }>('/api/img', {
-                  method: 'POST',
-                  body: fD
-                })
-                alt.value = ''
-                fileref.value = ''
-                setTimeout(() => {
-                  editor.value?.chain().focus().setImage({ src: data.url, alt: alt.value }).run()
-                }, 500)
-            };
-            img.src = e.target?.result as string
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = document.createElement("img");
+        img.onload = async () => {
+          fD.append('width', img.naturalWidth.toString())
+          fD.append('height', img.naturalHeight.toString())
+          const data = await $fetch<{ url: string }>('/api/img', {
+            method: 'POST',
+            body: fD
+          })
+          alt.value = ''
+          fileref.value = ''
+          setTimeout(() => {
+            editor.value?.chain().focus().setImage({ src: data.url, alt: alt.value }).run()
+          }, 500)
         };
-        reader.readAsDataURL(file);
+        img.src = e.target?.result as string
+      };
+      reader.readAsDataURL(file);
     }
   }
 }
@@ -219,19 +229,46 @@ function pasteText(e: any) {
   //     }
   //   } while (iS!=-1)
   // }
-
+  txt = `<p>${txt.replaceAll('\n', '<br>').replace(/<br>\s+<br>/g, '</p><p>')}</p>`
+    .split('<br>').map(el => el.trim()).join('<br>')
+    .split('</p>').map(el => el.trim()).join('</p>')
   editor.value.commands.insertContent(txt)
-  
+
 };
 
 onMounted(() => {
   editor.value = new Editor({
     content: props.text || '',
-    extensions: [StarterKit, Image, Highlight],
+    extensions: [StarterKit, Image, Highlight,
+      // Link.configure({
+      //   openOnClick: false,
+      //   defaultProtocol: 'https',
+      // }),
+    ],
   })
   el = document.querySelector('.editor_block')
   el.addEventListener('paste', pasteText, true)
 })
+
+const setLink = () => {
+  const previousUrl = editor.value.getAttributes('link').href
+  const url = window.prompt('URL', previousUrl)
+
+  // cancelled
+  if (url === null) {
+    return
+  }
+
+  // empty
+  if (url === '') {
+    editor.value.chain().focus().extendMarkRange('link').unsetLink().run()
+
+    return
+  }
+
+  // update link
+  editor.value.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
+}
 
 onBeforeUnmount(() => {
   editor.value.destroy()
