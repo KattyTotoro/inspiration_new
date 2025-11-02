@@ -18,7 +18,7 @@ header {
 }
 
 header {
-    background: url('/_ipx/w_1920&q_70&f_webp/img/mountain3.png') 0% 25%/108% no-repeat;
+    background: url('/_ipx/w_1920&q_70&f_webp/img/mountain8.jpg') 0% 25%/108% no-repeat;
 }
 
 @media screen and (max-width:1366px) {
@@ -26,7 +26,7 @@ header {
         background: url('/_ipx/w_1366&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
     }
     header {
-        background: url('/_ipx/w_1366&q_70&f_webp/img/mountain3.png') 0% 25%/108% no-repeat;
+        background: url('/_ipx/w_1366&q_70&f_webp/img/mountain8.jpg') 0% 25%/108% no-repeat;
     }
 }
 @media screen and (max-width:1047px) {
@@ -34,7 +34,7 @@ header {
         background: url('/_ipx/w_1366&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
     }
     header {
-        background: url('/_ipx/w_1366&q_70&f_webp/img/mountain3.png') 0% 0%/108% no-repeat;
+        background: url('/_ipx/w_1366&q_70&f_webp/img/mountain8.jpg') 0% 0%/108% no-repeat;
     }
 }
 @media screen and (max-width:960px) {
@@ -42,7 +42,7 @@ header {
         background: url('/_ipx/w_960&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
     }
     header {
-        background: url('/_ipx/w_960&q_70&f_webp/img/mountain3.png') 0% 0%/108% no-repeat;
+        background: url('/_ipx/w_960&q_70&f_webp/img/mountain8.jpg') 0% 0%/108% no-repeat;
     }
 }
 @media screen and (max-width:780px) {
@@ -50,7 +50,7 @@ header {
         background: url('/_ipx/w_780&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
     }
     header {
-        background: url('/_ipx/w_780&q_70&f_webp/img/mountain3.png') 0% 0%/108% no-repeat;
+        background: url('/_ipx/w_780&q_70&f_webp/img/mountain8.jpg') 0% 0%/108% no-repeat;
     }
 }
 @media screen and (max-width:500px) {
@@ -58,7 +58,7 @@ header {
         background: url('/_ipx/w_500&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
     }
     header {
-        background: url('/_ipx/w_500&q_70&f_webp/img/mountain3.png') 0% 0%/108% no-repeat;
+        background: url('/_ipx/w_500&q_70&f_webp/img/mountain8.jpg') 0% 0%/108% no-repeat;
     }
 }
 
@@ -313,7 +313,6 @@ footer {
     margin-left: 200px;
     padding: 20px;
     background: rgba(123, 166, 194, 0.797);
-    height: 200px;
     box-shadow: 0 0 20px rgb(134, 134, 134);
     border-radius: 0 0 0 15px;
 }
