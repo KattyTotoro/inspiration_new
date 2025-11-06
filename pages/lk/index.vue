@@ -20,37 +20,44 @@
         <label for="tab-recovery" class="tab-title rocovery">Восстановление пароля</label>
       </div>
         <!-- Вкладка Входа -->
-      <div class="tab" v-if="variant=='login'">
-        <div class="tab-content">
-          <form class="lk_entrance" @submit.prevent="handleLogin">
-            <input type="email" v-model="email" placeholder="Введите почту" required>
-            <input type="password" v-model="password" placeholder="Введите пароль" required>
-            <button type="submit">Войти</button>
-            <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
-          </form>
-        </div>
-      </div>
+      <div class="tab-content">
+        <template  v-if="variant=='login'">
+          
+            <form class="lk_entrance" @submit.prevent="handleLogin">
+              <input type="email" v-model="email" placeholder="Введите почту" required>
+              <input type="password" v-model="password" placeholder="Введите пароль" required>
+              <button type="submit">Войти</button>
+              <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+            </form>
+          
+        </template>
 
-        <!-- Вкладка регистрации -->
-        <div class="tab" v-else-if="variant=='reg'">
-        <div class="tab-content">
-          <form class="lk_entrance" @submit.prevent="handleRegister">
-            <input type="email" v-model="email" placeholder="Введите почту" required>
-            <input type="password" v-model="password" placeholder="Введите пароль" required>
-            <input type="password" v-model="password2" placeholder="Повторите пароль" required>
-            <button type="submit">Зарегистрироваться</button>
-            <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
-          </form>
-        </div>
-      </div>
-      <!-- Вкладка восстановления пароля -->
-      <div class="tab" v-else>
-        <div class="tab-content">
-          <form class="lk_entrance" @submit.prevent="handleRecovery">
-            <input type="email" v-model="email" placeholder="Введите почту" required>
-            <button type="submit">Восстановить пароль</button>
-            <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
-          </form>
+          <!-- Вкладка регистрации -->
+          <template  v-else-if="variant=='reg'">
+            <form class="lk_entrance" @submit.prevent="handleRegister">
+              <input type="email" v-model="email" placeholder="Введите почту" required>
+              <input type="password" v-model="password" placeholder="Введите пароль" required>
+              <input type="password" v-model="password2" placeholder="Повторите пароль" required>
+              <button type="submit">Зарегистрироваться</button>
+              <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+            </form>
+          </template>
+        <!-- Вкладка восстановления пароля -->
+        <template v-else>
+            <form class="lk_entrance" @submit.prevent="handleRecovery">
+              <input type="email" v-model="email" placeholder="Введите почту" required>
+              <button type="submit">Восстановить пароль</button>
+              <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
+            </form>
+          
+        </template>
+
+       <div class="choiceOfConsent"> 
+          <p>
+            Регистрируясь, я даю 
+            <NuxtLink class="linkConsent" to="/consent">согласие на обработку данных </NuxtLink>
+             и условия почтовых рассылок.
+          </p>
         </div>
       </div>
     </div>
@@ -182,7 +189,7 @@ watch(()=>userStore.user, (user)=>{
   margin: 20px auto;
   margin-bottom: 20px;
   max-width: 600px;
-  height: 334px;
+  height: 500px;
 }
 
 .tabs_buttons {
@@ -300,6 +307,16 @@ input[type="radio"]:checked + .tab-title {
   gap: 20px;
   margin: 50px auto;
   width: 940px;
+}
+
+.choiceOfConsent {
+  padding: 20px;
+}
+
+.linkConsent {
+  color: green;
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 @media screen and (max-width:600px) {
