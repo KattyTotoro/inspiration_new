@@ -482,6 +482,10 @@ a.lk_link_button {
     transition: 0.3s;
 }
 
+.logout_button:hover:active {
+    transform: translate(3px, 3px);
+}
+
 .comments {
     padding: 20px;
     border: solid 1px gray;
@@ -515,11 +519,6 @@ a.lk_link_button {
 
 .currentLink {
     background-color: #ffffff;
-}
-
-.search {
-    text-align: right;
-    margin-bottom: 20px;
 }
 
 

@@ -2,8 +2,8 @@
 
     <section class="content">
 
-    <div class="consentText">
-      <h1>Согласие на обработку персональных данных</h1>
+    <div class="mailing-termsText">
+      <h1>Условия рассылок электронных писем.</h1>
 
       <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis, facere! Pariatur repellat, soluta consequuntur sequi recusandae labore consequatur ut, error exercitationem, odit sunt maxime aut fugiat fugit placeat veritatis consectetur.
       </p>
@@ -13,7 +13,7 @@
       </p>
     </div>
 
-    <button class="acceptConsentButton">Принять согласие</button>
+    <button class="mailing-termsButton">Принять условия</button>
 
   </section>
 
@@ -21,17 +21,17 @@
 
 <style scoped>
 
-.consentText {
+.mailing-termsText {
   font-size: 22px;
   padding: 20px;
   /* padding-bottom: 50px; */
 }
 
-.consentText h1 {
+.mailing-termsText h1 {
   margin: 20px;
 }
 
-.acceptConsentButton {
+.mailing-termsButton {
     width: 210px;
     background: #dfeffe78;
     color: rgb(40, 65, 91);
@@ -47,14 +47,14 @@
     transition: 0.5s;
 }
 
-.acceptConsentButton:hover {
+.mailing-termsButton:hover {
     background-color: #ebc108d3;
     color: #fff;
     box-shadow: 0 0 7px 1px rgba(246, 214, 9, 0.893) inset;
     transition: 0.3s;
 }
 
-.acceptConsentButton:active {
+.mailing-termsButton:active {
     transform: translate(3px, 3px);
 }
 

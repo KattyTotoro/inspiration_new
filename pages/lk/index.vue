@@ -41,7 +41,20 @@
               <button type="submit">Зарегистрироваться</button>
               <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
             </form>
+
+            <!-- Согласие с обработкой персональных данных и условиями рассылок -->
+            <div class="choiceOfConsent"> 
+              <p>
+                Регистрируясь, я даю 
+                <input type="checkbox">
+                <NuxtLink class="linkConsent" to="/consent">согласие на обработку данных </NuxtLink>
+                и 
+                <input type="checkbox">
+                <NuxtLink class="linkConsent" to="/mailing-terms">условия почтовых рассылок</NuxtLink>.
+              </p>
+            </div>
           </template>
+
         <!-- Вкладка восстановления пароля -->
         <template v-else>
             <form class="lk_entrance" @submit.prevent="handleRecovery">
@@ -52,13 +65,6 @@
           
         </template>
 
-       <div class="choiceOfConsent"> 
-          <p>
-            Регистрируясь, я даю 
-            <NuxtLink class="linkConsent" to="/consent">согласие на обработку данных </NuxtLink>
-             и условия почтовых рассылок.
-          </p>
-        </div>
       </div>
     </div>
 
@@ -311,6 +317,11 @@ input[type="radio"]:checked + .tab-title {
 
 .choiceOfConsent {
   padding: 20px;
+}
+
+.choiceOfConsent input {
+  font-size: 22px;
+  margin: 10px;
 }
 
 .linkConsent {
