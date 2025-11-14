@@ -4,10 +4,7 @@
     <strong>Путеводители среди знаний.</strong></h1> -->
 
     <!-- Поиск -->
-    <div class="search">
-      <input type="search" id="name" name="name" placeholder="Введите слова поиска"> 
-      <button><img src="/954591.png" width="30px" alt=""></button>
-    </div>
+    <SearchComponent></SearchComponent>
 
     <h1>Все публикации</h1>
     <div>
@@ -36,31 +33,3 @@ const addPosts = (data:any[])=>{
   posts.value?.push(...data)
 }
 </script>
-
-
-<style scoped>
-
-/* .grid {
-  display: grid;
-  grid-template-columns: 300px 300px 300px;
-  gap: 20px;
-  margin: 50px auto;
-  width: 940px;
-} */
-
-.search {
-  text-align: right;
-  margin-bottom: 20px;
-}
-
-.search input {
-  padding: 10px;
-  margin-right: 10px;
-  border: solid 1px black ;
-  border-radius: 10px;
-}
-
-.search input::placeholder {
-  color: black;
-}
-</style>
