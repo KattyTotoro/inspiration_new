@@ -522,6 +522,7 @@ a.lk_link_button {
 }
 
 .search {
+  position: relative;
   text-align: right;
   margin-bottom: 20px;
   height: 44px;
@@ -541,6 +542,15 @@ a.lk_link_button {
   background-color: white;
   text-align: left;
   transition: 1s;
+}
+
+.needMoreLettersWindow {
+  position: absolute;
+  right: 0%;
+  bottom: -110%;
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
 }
 
 @media screen and (max-width:1330px) {

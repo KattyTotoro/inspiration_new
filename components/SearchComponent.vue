@@ -2,6 +2,11 @@
   <div class="search">
     <input @keypress.enter="search" v-model="searchText" type="search" name="search" :style="active?'width:240px':'width:0;padding:0; border:0'" placeholder="Введите слова поиска"> 
     <button @click="showOrSearch"><nuxt-img src="/954591.png" width="30px" alt="search"/></button>
+
+    <!-- Если пользователь ввёл меньше 2-х символов -->
+    <div class="needMoreLettersWindow">
+    <p>Введите более 2-х символов</p>
+    </div>
   </div>
 </template>
 
