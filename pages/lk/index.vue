@@ -38,7 +38,7 @@
               <input type="email" v-model="email" placeholder="Введите почту" required>
               <input type="password" v-model="password" placeholder="Введите пароль" required>
               <input type="password" v-model="password2" placeholder="Повторите пароль" required>
-              <button type="submit">Зарегистрироваться</button>
+              <button type="submit" :disabled="!confirm">Зарегистрироваться</button>
               <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
             </form>
 
@@ -46,10 +46,9 @@
             <div class="choiceOfConsent"> 
               <p>
                 Регистрируясь, я даю 
-                <input type="checkbox">
+                <input v-model="confirm" type="checkbox">
                 <NuxtLink class="linkConsent" to="/consent">согласие на обработку данных </NuxtLink>
                 и 
-                <input type="checkbox">
                 <NuxtLink class="linkConsent" to="/mailing-terms">условия почтовых рассылок</NuxtLink>.
               </p>
             </div>
@@ -106,11 +105,9 @@ const email = ref('');
 const password = ref('');
 const password2 = ref('');
 const errorMessage = ref('');
+const confirm = ref(false)
 const posts = ref([] as Post[]); // Список публикаций
 const userStore = useUser()
-
-const registerError = ref('');
-
 
 // Функция для входа
 const handleLogin = async () => {
@@ -149,12 +146,15 @@ const handleRecovery = async()=>{
 // Обработчик регистрации
 const handleRegister = async () => {
   if (password.value !== password2.value) {
-    registerError.value = 'Пароли не совпадают';
+    errorMessage.value = 'Пароли не совпадают';
     return;
   }
-
+  if (!confirm.value) {
+    errorMessage.value = 'Необходимо дать согласие';
+    return;
+  }
   try {
-    registerError.value = '';
+    errorMessage.value = '';
     await userStore.regIn(
       email.value,
       md5(password.value)
@@ -165,7 +165,7 @@ const handleRegister = async () => {
     password2.value = '';
     variant.value = 'login'
   } catch (error) {
-    registerError.value = 'Ошибка регистрации. Возможно, email уже занят';
+    errorMessage.value = 'Ошибка регистрации. Возможно, email уже занят';
   }
 };
 
@@ -219,19 +219,6 @@ watch(()=>userStore.user, (user)=>{
 
 .tab-title:hover {
   background: #e0e0e0;
-}
-
-input[type="radio"] { 
-  display: none; 
-}
-
-input[type="radio"]:checked + .tab-title {
-  background: #fff;
-  border-bottom: 1px solid #fff;
-  margin-bottom: -1px;
-  color: #007bff;
-  font-weight: bold;
-  padding: 10px;
 }
 
 /* .tab:checked + .tab-title {

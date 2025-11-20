@@ -546,11 +546,28 @@ a.lk_link_button {
 
 .needMoreLettersWindow {
   position: absolute;
-  right: 0%;
-  bottom: -110%;
+  right: 16px;
+  bottom: -70px;
   border-radius: 10px;
   background-color: white;
   padding: 20px;
+}
+
+input[type="radio"] { 
+  display: none; 
+}
+
+input[type="radio"]:checked + .tab-title {
+  background: #fff;
+  border-bottom: 1px solid #fff;
+  margin-bottom: -1px;
+  color: #007bff;
+  font-weight: bold;
+  padding: 10px;
+}
+
+button[type="submit"]:disabled {
+  background-color: grey !important;
 }
 
 @media screen and (max-width:1330px) {

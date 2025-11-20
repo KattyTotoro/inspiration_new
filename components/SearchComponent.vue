@@ -4,8 +4,8 @@
     <button @click="showOrSearch"><nuxt-img src="/954591.png" width="30px" alt="search"/></button>
 
     <!-- Если пользователь ввёл меньше 2-х символов -->
-    <div class="needMoreLettersWindow">
-    <p>Введите более 2-х символов</p>
+    <div v-if="needMoreLetters" class="needMoreLettersWindow">
+      <p>Введите более 2-х символов</p>
     </div>
   </div>
 </template>

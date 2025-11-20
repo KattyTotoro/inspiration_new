@@ -2,7 +2,7 @@
     <section class="content">
 <!-- <h1>Сайт Вдохновение. Транслирование знаний. <br>
 <strong>Путеводители среди знаний.</strong></h1> -->
-
+<TrainingOne></TrainingOne>
 <h1>Все публикации</h1>
 
 <div>
