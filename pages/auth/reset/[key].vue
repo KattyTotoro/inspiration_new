@@ -1,4 +1,5 @@
 <template>
+  <section class="content">
   <p v-if="!data?.ok">Что-то пошло не так</p>
   <div v-if="data?.ok && !success">
     <form class="lk_entrance" @submit.prevent="handleChangePass">
@@ -9,6 +10,7 @@
     </form>
   </div>
   <div v-if="success">Пароль успешно изменён</div>
+  </section>
 </template>
   
 <script setup lang="ts">

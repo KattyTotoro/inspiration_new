@@ -1,5 +1,7 @@
 <template>
-  <p>{{ text }}</p>    
+  <section class="content">
+    <p>{{ text }}</p>   
+  </section>
 </template>
   
 <script setup lang="ts">
