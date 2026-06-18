@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer'
+import process from 'node:process'
 
 const transport = nodemailer.createTransport({
   host: "smtp.mail.ru",
@@ -6,7 +7,7 @@ const transport = nodemailer.createTransport({
   secure: true,
   auth: {
     user: 'dom_mirra@mail.ru',
-    pass: 'eETVesGmh1HlQHcFPagO',
+    pass: process.env.MAIL_PASS,
   },
 })
 
@@ -16,7 +17,7 @@ let confirm = async (mail: string, key: string) => {
     to: mail,
     subject: 'Подтверждение email ✔',
     html: `
-    <p style="text-align:center; ">Для подтверждения email прейдите по <a style="color:#F0723B" href="${import.meta.dev?'http://localhost:3000':'https://inspirationworld.ru'}/auth/confirm/${key}">ссылке</a></p>
+    <p style="text-align:center; ">Для подтверждения email прейдите по <a style="color:#F0723B" href="${import.meta.dev ? 'http://localhost:3000' : 'https://inspirationworld.ru'}/auth/confirm/${key}">ссылке</a></p>
     `,
   })
 }
@@ -27,7 +28,7 @@ let resetPass = async (mail: string, key: string) => {
     to: mail,
     subject: 'Восстановление доступа ✔',
     html: `
-    <p style="text-align:center; ">Для восстановления доступа к учетной записи прейдите по <a style="color:#F0723B" href="${import.meta.dev?'http://localhost:3000':'https://inspirationworld.ru'}/auth/reset/${key}">ссылке</a></p>
+    <p style="text-align:center; ">Для восстановления доступа к учетной записи прейдите по <a style="color:#F0723B" href="${import.meta.dev ? 'http://localhost:3000' : 'https://inspirationworld.ru'}/auth/reset/${key}">ссылке</a></p>
     <p style="text-align:center; ">Ссылка доступна в течение двух часов</p>
     `,
   })
