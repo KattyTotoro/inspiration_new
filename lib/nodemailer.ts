@@ -1,6 +1,8 @@
 import nodemailer from 'nodemailer'
 import process from 'node:process'
 
+console.log(process.env.MAIL_PASS)
+
 const transport = nodemailer.createTransport({
   host: "smtp.mail.ru",
   port: 465,
