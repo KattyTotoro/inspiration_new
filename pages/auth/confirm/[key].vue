@@ -1,13 +1,13 @@
 <template>
   <section class="content">
-    <p>{{ text }}</p>   
+    <p>{{ text }}</p>
   </section>
 </template>
-  
+
 <script setup lang="ts">
 const route = useRoute()
 const text = ref('Проверяем...')
-const { data }= await useFetch(`/api/auth/confirm/${route.params.key}`)
+const { data } = await useFetch(`/api/auth/confirm/${route.params.key}`)
 if (data.value?.ok) {
   text.value = 'Успешно подтверждена'
 } else {

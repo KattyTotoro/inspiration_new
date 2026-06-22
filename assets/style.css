@@ -13,8 +13,8 @@ body {
 }
 
 header {
-   position: relative;
-   height: 750px;
+    position: relative;
+    height: 750px;
 }
 
 header {
@@ -25,38 +25,47 @@ header {
     body {
         background: url('/_ipx/w_1366&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
     }
+
     header {
         background: url('/_ipx/w_1366&q_70&f_webp/img/mountain8.jpg') 0% 25%/108% no-repeat;
     }
 }
+
 @media screen and (max-width:1047px) {
     body {
         background: url('/_ipx/w_1366&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
     }
+
     header {
         background: url('/_ipx/w_1366&q_70&f_webp/img/mountain8.jpg') 0% 0%/108% no-repeat;
     }
 }
+
 @media screen and (max-width:960px) {
     body {
         background: url('/_ipx/w_960&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
     }
+
     header {
         background: url('/_ipx/w_960&q_70&f_webp/img/mountain8.jpg') 0% 0%/108% no-repeat;
     }
 }
+
 @media screen and (max-width:780px) {
     body {
         background: url('/_ipx/w_780&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
     }
+
     header {
         background: url('/_ipx/w_780&q_70&f_webp/img/mountain8.jpg') 0% 0%/108% no-repeat;
     }
 }
+
 @media screen and (max-width:500px) {
     body {
         background: url('/_ipx/w_500&q_70&f_webp/img/sky.jpg') top/cover no-repeat;
     }
+
     header {
         background: url('/_ipx/w_500&q_70&f_webp/img/mountain8.jpg') 0% 0%/108% no-repeat;
     }
@@ -95,7 +104,7 @@ header h1 {
 nav {
     position: relative;
     max-width: fit-content;
-    height: 700px;
+    height: 400px;
     padding-top: 20px;
     transform: translateX(-135px);
     background: #fefcdf78;
@@ -116,10 +125,12 @@ nav::after {
     text-align: center;
     border-radius: 0 0 8px 8px;
     padding: 10px 0;
-    width: 700px;
+    width: 400px;
+    height: 48px;
     position: absolute;
-    left: 145px;
-    top: 700px;
+    left: 125px;
+    top: 400px;
+    bottom: 800px;
     transform-origin: 0 0;
     transform: rotate(-90deg);
 }
@@ -132,14 +143,14 @@ nav ul {
 
 nav ul li {
     /* background-color: #90c8f79a; */
-    margin: 20px 0;
+    margin: 10px 0;
     transition: 1s;
 }
 
 nav ul a {
     text-decoration: none;
     color: rgb(40, 65, 91);
-    padding: 20px;
+    padding: 10px;
 }
 
 nav ul a {
@@ -221,7 +232,8 @@ a.topMenuButton {
     box-shadow: 0 20px 30px rgb(134, 134, 134);
     border-top: none;
     padding: 50px;
-    margin-top: -732px;
+    margin-top: -432px;
+    min-height: 300px;
 }
 
 .content h1 {
@@ -425,7 +437,8 @@ a.lk_link_button {
     transform: translate(3px, 3px);
 }
 
-.post_create_button, .approveButton {
+.post_create_button,
+.approveButton {
     display: inline-block;
     background-color: rgb(100, 158, 206);
     font-size: 1.3rem;
@@ -436,21 +449,23 @@ a.lk_link_button {
     box-shadow: 0 0 20px rgb(211, 205, 205);
 }
 
-.post_create_button:hover, .approveButton:hover {
+.post_create_button:hover,
+.approveButton:hover {
     background-color: rgba(67, 173, 235, 0.918);
     box-shadow: 5px 5px 10px rgb(138, 189, 248);
 }
 
-.post_create_button:active, .approveButton:active {
+.post_create_button:active,
+.approveButton:active {
     transform: translate(3px, 3px);
 }
 
 .myPublications {
-    background-image: linear-gradient(#2e9aff6e, #f498ae6c); 
-    margin-top: 50px; 
+    background-image: linear-gradient(#2e9aff6e, #f498ae6c);
+    margin-top: 50px;
     padding: 20px;
-    font-size: 28px; 
-    text-align: center; 
+    font-size: 28px;
+    text-align: center;
     font-style: italic;
     border-radius: 5px;
     box-shadow: 0 0 20px rgb(134, 134, 134);
@@ -469,7 +484,7 @@ a.lk_link_button {
     border: 3px solid #dfeffe;
     border-radius: 10px;
     text-align: center;
-    cursor: pointer;    
+    cursor: pointer;
     text-shadow: 2px 2px 2px rgba(185, 206, 224, 0.4);
     box-shadow: 0 0 20px whitesmoke;
     transition: 0.5s;
@@ -522,52 +537,52 @@ a.lk_link_button {
 }
 
 .search {
-  position: relative;
-  text-align: right;
-  margin-bottom: 20px;
-  height: 44px;
+    position: relative;
+    text-align: right;
+    margin-bottom: 20px;
+    height: 44px;
 }
 
 .search button {
-  display: inline-flex;
-  align-items: center;
-  height: 44px;
+    display: inline-flex;
+    align-items: center;
+    height: 44px;
 }
 
 .search input {
-  padding: 10px;
-  margin-right: 10px;
-  border: solid 1px black ;
-  border-radius: 10px;
-  background-color: white;
-  text-align: left;
-  transition: 1s;
+    padding: 10px;
+    margin-right: 10px;
+    border: solid 1px black;
+    border-radius: 10px;
+    background-color: white;
+    text-align: left;
+    transition: 1s;
 }
 
 .needMoreLettersWindow {
-  position: absolute;
-  right: 16px;
-  bottom: -70px;
-  border-radius: 10px;
-  background-color: white;
-  padding: 20px;
+    position: absolute;
+    right: 16px;
+    bottom: -70px;
+    border-radius: 10px;
+    background-color: white;
+    padding: 20px;
 }
 
-input[type="radio"] { 
-  display: none; 
+input[type="radio"] {
+    display: none;
 }
 
-input[type="radio"]:checked + .tab-title {
-  background: #fff;
-  border-bottom: 1px solid #fff;
-  margin-bottom: -1px;
-  color: #007bff;
-  font-weight: bold;
-  padding: 10px;
+input[type="radio"]:checked+.tab-title {
+    background: #fff;
+    border-bottom: 1px solid #fff;
+    margin-bottom: -1px;
+    color: #007bff;
+    font-weight: bold;
+    padding: 10px;
 }
 
 button[type="submit"]:disabled {
-  background-color: grey !important;
+    background-color: grey !important;
 }
 
 @media screen and (max-width:1330px) {
@@ -634,8 +649,8 @@ button[type="submit"]:disabled {
 @media screen and (max-width:1047px) {
 
     header h1 {
-       top: 13px;
-       left: 13%;
+        top: 13px;
+        left: 13%;
     }
 
     /* @keyframes h1Fly {
@@ -672,7 +687,7 @@ button[type="submit"]:disabled {
 }
 
 @media screen and (max-width:971px) {
-    
+
     /* @keyframes h1Fly {
         from {
             top: -120px;
@@ -690,8 +705,8 @@ button[type="submit"]:disabled {
     }
 
     header h1 {
-       top: 8px;
-       left: 5%;
+        top: 8px;
+        left: 5%;
     }
 
     a.topMenuButton {
@@ -738,6 +753,7 @@ button[type="submit"]:disabled {
         margin: 0;
     }
 }
+
 @media screen and (max-width:691px) {
 
     header {
@@ -948,7 +964,7 @@ button[type="submit"]:disabled {
         } */
 
         a.topMenuButton {
-             padding: 5px 10px;
+            padding: 5px 10px;
         }
 
         .lk_link_button {
